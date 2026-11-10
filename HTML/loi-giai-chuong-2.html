@@ -1,0 +1,1207 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lời giải bài tập Chương 2 — Định thức</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+<style>
+:root{
+  --bg:#f6f7fb; --paper:#ffffff; --ink:#1d2433; --muted:#5b6475; --line:#e2e6ef;
+  --accent:#3138b0; --accent-soft:#eceefe;
+  --note-bg:#fff8e6; --note-line:#e7b23c; --note-ink:#5a4510;
+  --idea-bg:#eaf6f0; --idea-line:#2f9a6a;
+  --ans-bg:#eef3ff; --ans-line:#3a5bd9;
+  --warn-bg:#fdeeee; --warn-line:#d0473f;
+  --de-bg:#f1f3f8;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#13161d; --paper:#1b1f29; --ink:#e6e9f0; --muted:#a2a9b8; --line:#2c3240;
+    --accent:#9aa2ff; --accent-soft:#252a45;
+    --note-bg:#2b2516; --note-line:#c99a2e; --note-ink:#f1dfae;
+    --idea-bg:#16291f; --idea-line:#3fb07d;
+    --ans-bg:#1a2340; --ans-line:#6f8cff;
+    --warn-bg:#2f1b1b; --warn-line:#e06a62;
+    --de-bg:#20242f;
+  }
+}
+:root[data-theme="dark"]{
+    --bg:#13161d; --paper:#1b1f29; --ink:#e6e9f0; --muted:#a2a9b8; --line:#2c3240;
+    --accent:#9aa2ff; --accent-soft:#252a45;
+    --note-bg:#2b2516; --note-line:#c99a2e; --note-ink:#f1dfae;
+    --idea-bg:#16291f; --idea-line:#3fb07d;
+    --ans-bg:#1a2340; --ans-line:#6f8cff;
+    --warn-bg:#2f1b1b; --warn-line:#e06a62;
+    --de-bg:#20242f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Be Vietnam Pro",system-ui,sans-serif;font-size:16px;line-height:1.6}
+a{color:var(--accent)}
+header.top{background:var(--accent);color:#fff;padding:22px 24px}
+:root[data-theme="dark"] header.top{color:#11131c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) header.top{color:#11131c}}
+header.top h1{margin:0;font-size:1.5rem;line-height:1.3}
+header.top p{margin:.3rem 0 0;opacity:.9}
+.layout{display:grid;grid-template-columns:250px minmax(0,1fr);gap:24px;max-width:1380px;margin:0 auto;padding:20px 16px 80px}
+nav.toc{position:sticky;top:12px;align-self:start;max-height:calc(100vh - 24px);overflow:auto;background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:12px 10px;font-size:.88rem}
+nav.toc b{display:block;margin:6px 6px 8px;color:var(--muted);font-weight:600;text-transform:uppercase;font-size:.75rem;letter-spacing:.05em}
+nav.toc a{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;padding:3px 8px;border-radius:6px;text-decoration:none;color:var(--ink);line-height:1.45}
+nav.toc a .katex{font-size:1em}
+nav.toc a:hover{background:var(--accent-soft)}
+nav.toc .grp{margin:10px 8px 4px;font-weight:600;color:var(--accent);font-size:.82rem}
+main{min-width:0}
+.intro{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:16px 20px;margin-bottom:22px}
+.intro h2{margin-top:0}
+section.problem{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:18px 22px 20px;margin-bottom:26px;scroll-margin-top:12px}
+section.problem>h2{margin:0 0 10px;font-size:1.25rem;display:flex;gap:10px;align-items:baseline}
+section.problem>h2 .num{background:var(--accent);color:#fff;border-radius:8px;padding:1px 10px;font-size:1rem;flex:none}
+:root[data-theme="dark"] section.problem>h2 .num{color:#11131c}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) section.problem>h2 .num{color:#11131c}}
+h2.group{margin:34px 0 14px;font-size:1.35rem;color:var(--accent);border-bottom:2px solid var(--accent);padding-bottom:4px}
+.de{background:var(--de-bg);border-radius:8px;padding:10px 14px;margin:6px 0 12px}
+.de::before{content:"Đề bài";display:block;font-weight:600;font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.nhan-dang{background:var(--idea-bg);border-left:4px solid var(--idea-line);border-radius:6px;padding:8px 14px;margin:10px 0 14px}
+.nhan-dang::before{content:"🧭 Nhận dạng & hướng giải";display:block;font-weight:600;font-size:.85rem;margin-bottom:2px}
+h3.part{font-size:1.05rem;margin:18px 0 8px;color:var(--accent)}
+.step{display:grid;grid-template-columns:minmax(0,1.85fr) minmax(200px,1fr);gap:14px;margin:8px 0;align-items:start}
+.step>.work{min-width:0;overflow-x:auto;padding:4px 2px}
+.step>.note{background:var(--note-bg);border-left:4px solid var(--note-line);color:var(--note-ink);border-radius:6px;padding:8px 12px;font-size:.9rem;line-height:1.5}
+.step>.note::before{content:"💡 Ghi chú";display:block;font-weight:600;font-size:.78rem;text-transform:uppercase;letter-spacing:.04em;margin-bottom:2px;opacity:.85}
+.step>.note p{margin:.3em 0}
+.step.full{grid-template-columns:minmax(0,1fr)}
+.kq{background:var(--ans-bg);border-left:4px solid var(--ans-line);border-radius:6px;padding:8px 14px;margin:12px 0 4px;overflow-x:auto}
+.kq::before{content:"∴ Kết luận";display:block;font-weight:600;font-size:.82rem;color:var(--ans-line)}
+.canh-bao{background:var(--warn-bg);border-left:4px solid var(--warn-line);border-radius:6px;padding:8px 14px;margin:10px 0;font-size:.92rem}
+.canh-bao::before{content:"⚠ Lưu ý / sai lầm hay gặp";display:block;font-weight:600;font-size:.82rem;color:var(--warn-line)}
+pre.code{background:var(--de-bg);border:1px solid var(--line);border-radius:8px;padding:10px 12px;overflow-x:auto;font-size:.85rem;line-height:1.45}
+.katex-display{margin:.5em 0;overflow-x:auto;overflow-y:hidden;padding:2px 0}
+table.t{border-collapse:collapse;margin:6px 0}
+table.t td,table.t th{border:1px solid var(--line);padding:4px 10px;text-align:center}
+.themebtn{position:fixed;right:14px;bottom:14px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:20px;padding:6px 12px;cursor:pointer;font:inherit;font-size:.85rem}
+.totop{position:fixed;right:14px;bottom:56px;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:20px;padding:6px 12px;text-decoration:none;font-size:.85rem}
+@media (max-width:900px){
+  .layout{grid-template-columns:minmax(0,1fr)}
+  nav.toc{position:static;max-height:none}
+  .step{grid-template-columns:minmax(0,1fr)}
+  section.problem{padding:14px 14px}
+}
+@media print{nav.toc,.themebtn,.totop{display:none}.layout{display:block}section.problem{break-inside:avoid-page}}
+</style>
+</head>
+<body>
+<header class="top"><h1>Lời giải bài tập Chương 2 — Định thức</h1><p>Bài tập 2.1 – 2.16 và bài tập thực hành Maple · Trình bày theo quy ước bài giảng ĐSTT (Nguyễn Anh Thi)</p></header>
+<div class="layout">
+<nav class="toc" id="toc"><b>Mục lục</b></nav>
+<main id="main">
+<div class="intro">
+<p><b>Cách học:</b> mỗi phần mở đầu bằng các <b>ví dụ mẫu</b> (khung viền xanh lá), ví dụ cách tính định thức cấp 4, cấp 5; đọc kỹ chúng trước. Sau đó đến <b>bài tập</b>: chỉ hiện đề, bạn tự làm rồi mới bấm <b>Gợi ý</b> hoặc <b>Xem lời giải</b>. Nút "Mở tất cả lời giải" ở đầu trang mở toàn bộ cùng lúc.</p>
+<h2>Công cụ dùng trong chương (tóm tắt từ bài giảng)</h2>
+<table class="t">
+<tr><th>Công cụ</th><th>Nội dung</th><th>Dùng ở bài</th></tr>
+<tr><td>Định nghĩa (khai triển dòng 1)</td><td style="text-align:left">$n=1$: $|A|=a$; $n=2$: $|A|=a_{11}a_{22}-a_{12}a_{21}$; $n\gt 2$: $|A|=\sum_{k=1}^n a_{1k}(-1)^{1+k}|A(1|k)|$, với $A(i|j)$ là ma trận bỏ dòng $i$, cột $j$.</td><td><a href="#bt2-1">2.1</a>, <a href="#bt2-12">2.12</a>, <a href="#th2-1">TH 1</a></td></tr>
+<tr><td>Quy tắc Sarrus ($n=3$)</td><td style="text-align:left">$|A|=a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}-a_{13}a_{22}a_{31}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}$</td><td><a href="#bt2-2">2.2</a>, <a href="#bt2-7">2.7</a>, <a href="#bt2-11">2.11</a>, <a href="#bt2-14">2.14</a></td></tr>
+<tr><td>Phần bù đại số &amp; khai triển theo dòng/cột bất kỳ</td><td style="text-align:left">$c_{ij}=(-1)^{i+j}|A(i|j)|$; $|A|=\sum_k a_{ik}c_{ik}$ (dòng $i$) $=\sum_k a_{kj}c_{kj}$ (cột $j$). Nên chọn dòng/cột nhiều số 0.</td><td><a href="#bt2-4">2.4</a>, <a href="#bt2-5">2.5</a>, <a href="#bt2-9">2.9</a></td></tr>
+<tr><td>Định thức &amp; phép BĐSCTD</td><td style="text-align:left">$d_i\leftrightarrow d_j$: $|A'|=-|A|$; $d_i:=\alpha d_i$: $|A'|=\alpha|A|$; $d_i:=d_i+\beta d_j$: $|A'|=|A|$. Vì $|A^\top|=|A|$ nên các phép tương tự trên <b>cột</b> ($c_i\leftrightarrow c_j$, $c_i:=\alpha c_i$, $c_i:=c_i+\beta c_j$) có cùng tác dụng.</td><td><a href="#bt2-3">2.3</a>, <a href="#bt2-4">2.4</a>–<a href="#bt2-7">2.7</a>, <a href="#bt2-15">2.15</a></td></tr>
+<tr><td>Tính chất</td><td style="text-align:left">$|A^\top|=|A|$; có dòng (cột) bằng 0 $\Rightarrow |A|=0$; $A$ tam giác $\Rightarrow |A|=a_{11}a_{22}\cdots a_{nn}$; $|AB|=|A||B|$.</td><td><a href="#bt2-6">2.6</a>, <a href="#bt2-8">2.8</a>, <a href="#bt2-12">2.12</a>, <a href="#bt2-13">2.13</a></td></tr>
+<tr><td>Ma trận phụ hợp, nghịch đảo</td><td style="text-align:left">$C=(c_{ij})$, $\operatorname{adj}(A)=C^\top$; $A$ khả nghịch $\Leftrightarrow |A|\ne 0$ và $A^{-1}=\dfrac{1}{|A|}\operatorname{adj}(A)$. Riêng $2\times 2$: $\begin{pmatrix}a&amp;b\\c&amp;d\end{pmatrix}^{-1}=\dfrac{1}{ad-bc}\begin{pmatrix}d&amp;-b\\-c&amp;a\end{pmatrix}$.</td><td><a href="#bt2-9">2.9</a>–<a href="#bt2-12">2.12</a></td></tr>
+<tr><td>Quy tắc Cramer</td><td style="text-align:left">Hệ $n$ phương trình, $n$ ẩn $AX=B$; $\Delta=|A|$, $\Delta_i=|A_i|$ ($A_i$: thay cột $i$ của $A$ bởi cột $B$). (i) $\Delta\ne0$: nghiệm duy nhất $x_i=\Delta_i/\Delta$; (ii) $\Delta=0$, có $\Delta_i\ne 0$: vô nghiệm; (iii) $\Delta=\Delta_i=0\ \forall i$: vô nghiệm hoặc vô số nghiệm — phải giải lại bằng Gauss.</td><td><a href="#bt2-14">2.14</a>–<a href="#bt2-16">2.16</a></td></tr>
+</table>
+<p class="muted" style="margin-bottom:0">Ký hiệu trên dấu "=" (ví dụ $\overset{d_2:=d_2-d_1}{=}$) cho biết phép biến đổi vừa thực hiện, giống cách ghi trong bài giảng. Mọi kết quả số trong trang này đã được kiểm tra lại bằng máy (sympy).</p>
+</div>
+
+<h2 class="group">Phần 1. Tính định thức (2.1 – 2.8)</h2>
+
+<section class="problem" id="bt2-1">
+<h2><span class="num">2.1</span> Định thức cấp hai</h2>
+<div class="de">Tính các định thức cấp hai sau:
+$$\text{a)}\ \begin{vmatrix}3 & -2\\ 4 & 5\end{vmatrix};\quad \text{b)}\ \begin{vmatrix}4 & -5\\ -1 & -2\end{vmatrix};\quad \text{c)}\ \begin{vmatrix}\sin\alpha & \cos\alpha\\ \sin\beta & \cos\beta\end{vmatrix};\quad \text{d)}\ \begin{vmatrix}\sin\alpha & -\cos\alpha\\ \cos\alpha & \sin\alpha\end{vmatrix}.$$</div>
+<div class="nhan-dang">Định thức cấp 2 tính trực tiếp từ định nghĩa: tích đường chéo chính trừ tích đường chéo phụ.</div>
+<div class="step">
+<div class="work">
+$$\text{a)}\ \begin{vmatrix}3 & -2\\ 4 & 5\end{vmatrix}=3\cdot5-(-2)\cdot 4=15+8=23.$$
+$$\begin{aligned}\text{b)}\ \begin{vmatrix}4 & -5\\ -1 & -2\end{vmatrix} &= 4\cdot(-2)-(-5)(-1) = -8-5\\ &= -13.\end{aligned}$$
+</div>
+<aside class="note">Công thức $\begin{vmatrix}a_{11} & a_{12}\\ a_{21} & a_{22}\end{vmatrix}=a_{11}a_{22}-a_{12}a_{21}$. Cẩn thận dấu khi có số âm: $-(-5)(-1)=-5$.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\text{c)}\ \sin\alpha\cos\beta-\cos\alpha\sin\beta=\sin(\alpha-\beta).$$
+$$\text{d)}\ \sin\alpha\cdot\sin\alpha-(-\cos\alpha)\cos\alpha=\sin^2\alpha+\cos^2\alpha=1.$$
+</div>
+<aside class="note">Sau khi áp dụng định nghĩa, dùng công thức lượng giác: $\sin(a-b)=\sin a\cos b-\cos a\sin b$ và $\sin^2+\cos^2=1$.</aside>
+</div>
+<div class="kq">a) $23$; b) $-13$; c) $\sin(\alpha-\beta)$; d) $1$.</div>
+</section>
+
+<section class="problem" id="bt2-2">
+<h2><span class="num">2.2</span> Định thức cấp ba</h2>
+<div class="de">Tính các định thức cấp ba sau:
+$$\text{a)}\begin{vmatrix}2 & 1 & 1\\ 0 & 5 & -2\\ 1 & -3 & 4\end{vmatrix};\ \text{b)}\begin{vmatrix}3 & -2 & -4\\ 2 & 5 & -1\\ 0 & 6 & 1\end{vmatrix};\ \text{c)}\begin{vmatrix}-2 & -1 & 4\\ 6 & -3 & -2\\ 4 & 1 & 2\end{vmatrix};\ \text{d)}\begin{vmatrix}7 & 6 & 5\\ 1 & 2 & 1\\ 3 & -2 & 1\end{vmatrix}.$$</div>
+<div class="nhan-dang">Cấp 3 với số cụ thể ⇒ dùng <b>quy tắc Sarrus</b>: (tổng 3 tích theo đường chéo "xuôi") − (tổng 3 tích theo đường chéo "ngược").</div>
+<div class="step">
+<div class="work">
+<p><b>a)</b></p>
+$$\begin{aligned}|A|&=\big(2\cdot5\cdot4+1\cdot(-2)\cdot1+1\cdot0\cdot(-3)\big)\\&\quad-\big(1\cdot5\cdot1+2\cdot(-2)(-3)+1\cdot0\cdot4\big)\end{aligned}$$
+$$=(40-2+0)-(5+12+0)=38-17=21.$$
+</div>
+<aside class="note">Quy tắc Sarrus: $|A|=$ (tổng 3 tích theo đường chéo xuôi ↘) − (tổng 3 tích theo đường chéo ngược ↗):$$\begin{aligned}&a_{11}a_{22}a_{33}+a_{12}a_{23}a_{31}+a_{13}a_{21}a_{32}\\&-a_{13}a_{22}a_{31}-a_{11}a_{23}a_{32}-a_{12}a_{21}a_{33}.\end{aligned}$$Đây chính là kết quả khai triển theo dòng 1 viết gọn lại. Chỉ dùng cho cấp 3!</aside>
+</div>
+<div class="step">
+<div class="work">
+<p><b>b)</b></p>
+$$|A|=\big(15+0-48\big)-\big(0-18-4\big)=-33+22=-11.$$
+<p><b>c)</b></p>
+$$|A|=\big(12+8+24\big)-\big(-48+4-12\big)=44+56=100.$$
+</div>
+<aside class="note">b) Các tích xuôi: $3\cdot5\cdot1,\ (-2)(-1)\cdot0,\ (-4)\cdot2\cdot6$; các tích ngược: $(-4)\cdot5\cdot0,\ 3\cdot(-1)\cdot6,\ (-2)\cdot2\cdot1$.<br>c) Xuôi: $(-2)(-3)2,\ (-1)(-2)4,\ 4\cdot6\cdot1$; ngược: $4(-3)4,\ (-2)(-2)1,\ (-1)6\cdot2$.</aside>
+</div>
+<div class="step">
+<div class="work">
+<p><b>d)</b></p>
+$$|A|=\big(14+18-10\big)-\big(30-14+6\big)=22-22=0.$$
+</div>
+<aside class="note">Kết quả bằng 0 không phải ngẫu nhiên: $d_1=4d_2+d_3$ (vì $(7,6,5)=4(1,2,1)+(3,-2,1)$). Làm $d_1:=d_1-4d_2-d_3$ (không đổi định thức) sẽ được một dòng 0 ⇒ $|A|=0$.</aside>
+</div>
+<div class="kq">a) $21$; b) $-11$; c) $100$; d) $0$.</div>
+</section>
+
+<section class="problem" id="bt2-3">
+<h2><span class="num">2.3</span> Tính theo α nhờ tính chất định thức</h2>
+<div class="de">Giả sử $\begin{vmatrix}a & b & c\\ d & e & f\\ g & h & i\end{vmatrix}=\alpha$. Hãy tính theo $\alpha$:
+$$\text{a)}\begin{vmatrix}d & e & f\\ g & h & i\\ a & b & c\end{vmatrix};\ \text{b)}\begin{vmatrix}a+g & b+h & c+i\\ d & e & f\\ g & h & i\end{vmatrix};\ \text{c)}\begin{vmatrix}3a & -b & 2c\\ 3d & -e & 2f\\ 3g & -h & 2i\end{vmatrix};$$
+$$\text{d)}\begin{vmatrix}2c & b & a\\ 2f & e & d\\ 2i & h & g\end{vmatrix};\ \text{e)}\begin{vmatrix}i & h & g\\ f & e & d\\ c & b & a\end{vmatrix};\ \text{f)}\begin{vmatrix}a & b & c\\ 2d-3g & 2e-3h & 2f-3i\\ g & h & i\end{vmatrix}.$$</div>
+<div class="nhan-dang">Không tính trực tiếp được (các phần tử là chữ) ⇒ tìm <b>chuỗi phép biến đổi sơ cấp</b> đưa ma trận gốc $A$ thành ma trận cần tính, rồi theo dõi định thức thay đổi thế nào: đổi chỗ ⇒ đổi dấu; nhân một dòng với $k$ ⇒ nhân $k$; cộng bội dòng khác ⇒ giữ nguyên. Vì $|A^\top|=|A|$ nên các quy tắc này đúng cả cho <b>cột</b>.</div>
+
+<h3 class="part">a)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\begin{pmatrix}a & b & c\\ d & e & f\\ g & h & i\end{pmatrix} &\xrightarrow{d_1\leftrightarrow d_2} \begin{pmatrix}d & e & f\\ a & b & c\\ g & h & i\end{pmatrix}\\ &\xrightarrow{d_2\leftrightarrow d_3} \begin{pmatrix}d & e & f\\ g & h & i\\ a & b & c\end{pmatrix}\end{aligned}$$
+$$\Rightarrow\ \text{định thức}=(-1)(-1)\alpha=\alpha.$$
+</div>
+<aside class="note">Mỗi lần hoán vị hai dòng, định thức đổi dấu. Hai lần đổi dấu ⇒ trở lại dấu cũ. (Hoán vị vòng 3 dòng = 2 lần đổi chỗ.)</aside>
+</div>
+
+<h3 class="part">b)</h3>
+<div class="step">
+<div class="work">
+$$A\xrightarrow{d_1:=d_1+d_3}\begin{pmatrix}a+g & b+h & c+i\\ d & e & f\\ g & h & i\end{pmatrix}\ \Rightarrow\ \text{định thức}=\alpha.$$
+</div>
+<aside class="note">Phép loại 3 (cộng vào một dòng bội của dòng khác) <b>không làm thay đổi</b> định thức.</aside>
+</div>
+
+<h3 class="part">c)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}A &\xrightarrow{c_1:=3c_1} \ \xrightarrow{c_2:=-c_2} \ \xrightarrow{c_3:=2c_3} \begin{pmatrix}3a & -b & 2c\\ 3d & -e & 2f\\ 3g & -h & 2i\end{pmatrix}\\ &\Rightarrow \text{định thức} = 3\cdot(-1)\cdot 2\cdot\alpha = -6\alpha.\end{aligned}$$
+</div>
+<aside class="note">Nhân một cột với $k$ thì định thức nhân $k$ (đúng như với dòng, do $|A^\top|=|A|$). Nói cách khác: "rút thừa số chung của một cột ra ngoài".</aside>
+</div>
+
+<h3 class="part">d)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\begin{vmatrix}2c & b & a\\ 2f & e & d\\ 2i & h & g\end{vmatrix} &= 2\begin{vmatrix}c & b & a\\ f & e & d\\ i & h & g\end{vmatrix}\\ &\overset{c_1\leftrightarrow c_3}{=} 2\cdot(-1)\begin{vmatrix}a & b & c\\ d & e & f\\ g & h & i\end{vmatrix} = -2\alpha.\end{aligned}$$
+</div>
+<aside class="note">Bước 1: rút thừa số 2 của cột 1. Bước 2: đổi chỗ cột 1 và cột 3 ⇒ đổi dấu.</aside>
+</div>
+
+<h3 class="part">e)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\begin{vmatrix}i & h & g\\ f & e & d\\ c & b & a\end{vmatrix} &\overset{d_1\leftrightarrow d_3}{=} -\begin{vmatrix}c & b & a\\ f & e & d\\ i & h & g\end{vmatrix}\\ &\overset{c_1\leftrightarrow c_3}{=} (-1)(-1)\begin{vmatrix}a & b & c\\ d & e & f\\ g & h & i\end{vmatrix} = \alpha.\end{aligned}$$
+</div>
+<aside class="note">Ma trận e) là $A$ "xoay 180°": đảo thứ tự dòng (1 lần đổi chỗ $d_1\leftrightarrow d_3$) và đảo thứ tự cột (1 lần $c_1\leftrightarrow c_3$) ⇒ hai lần đổi dấu.</aside>
+</div>
+
+<h3 class="part">f)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}A &\xrightarrow{d_2:=2d_2} \begin{pmatrix}a & b & c\\ 2d & 2e & 2f\\ g & h & i\end{pmatrix}\\ &\xrightarrow{d_2:=d_2-3d_3} \begin{pmatrix}a & b & c\\ 2d-3g & 2e-3h & 2f-3i\\ g & h & i\end{pmatrix}\end{aligned}$$
+$$\Rightarrow\ \text{định thức}=2\alpha.$$
+</div>
+<aside class="note">Dòng 2 mới $=2d_2-3d_3$: hệ số đứng trước <b>chính dòng 2</b> (là 2) mới làm định thức thay đổi (nhân 2); phần $-3d_3$ là phép loại 3, không ảnh hưởng.</aside>
+</div>
+<div class="kq">a) $\alpha$; b) $\alpha$; c) $-6\alpha$; d) $-2\alpha$; e) $\alpha$; f) $2\alpha$.</div>
+<div class="canh-bao">Hay nhầm ở f): nghĩ rằng định thức nhân $2\cdot(-3)$. Chỉ hệ số của dòng bị thay thế ($d_2$) mới nhân vào định thức.</div>
+</section>
+
+<section class="problem" id="bt2-4">
+<h2><span class="num">2.4</span> Định thức cấp bốn</h2>
+<div class="de">Tính các định thức cấp bốn sau:
+$$\text{a)}\begin{vmatrix}1 & 1 & 1 & 1\\ -1 & 3 & 1 & -4\\ -2 & 3 & 3 & 1\\ 3 & 3 & 1 & -1\end{vmatrix};\ \text{b)}\begin{vmatrix}1 & 3 & 2 & 4\\ -2 & 2 & 4 & 1\\ 2 & 2 & 5 & 4\\ -3 & -1 & 3 & -2\end{vmatrix};\ \text{c)}\begin{vmatrix}8 & -4 & 4 & -3\\ 4 & 0 & 2 & 0\\ 1 & -1 & 1 & -5\\ 2 & 7 & 2 & 2\end{vmatrix};\ \text{d)}\begin{vmatrix}6 & 4 & 1 & -8\\ 7 & 0 & 3 & -3\\ 2 & -2 & 3 & 2\\ -9 & 1 & 2 & 2\end{vmatrix}.$$</div>
+<div class="nhan-dang">Cấp $\ge 4$: không có Sarrus. Chiến lược của bài giảng: chọn một phần tử "dễ" (thường là $\pm1$) làm chuẩn, dùng phép loại 3 ($d_i:=d_i+\beta d_j$ hoặc $c_i:=c_i+\beta c_j$, <b>không đổi định thức</b>) khử hết các phần tử còn lại trên cột (dòng) của nó, rồi <b>khai triển theo cột (dòng) đó</b> ⇒ chỉ còn 1 định thức cấp thấp hơn. Lặp lại đến cấp 3 thì dùng Sarrus.</div>
+
+<h3 class="part">a)</h3>
+<div class="step">
+<div class="work">
+$$|A|\overset{\substack{d_2:=d_2+d_1\\ d_3:=d_3+2d_1\\ d_4:=d_4-3d_1}}{=}\begin{vmatrix}1 & 1 & 1 & 1\\ 0 & 4 & 2 & -3\\ 0 & 5 & 5 & 3\\ 0 & 0 & -2 & -4\end{vmatrix}$$
+</div>
+<aside class="note">Lấy $a_{11}=1$ làm chuẩn, khử cột 1. Các phép đều là loại 3 nên định thức giữ nguyên.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned} &\overset{\text{cột }1}{=} 1\cdot(-1)^{1+1}\begin{vmatrix}4 & 2 & -3\\ 5 & 5 & 3\\ 0 & -2 & -4\end{vmatrix}\\ &= 4\begin{vmatrix}5 & 3\\ -2 & -4\end{vmatrix}+5\cdot(-1)^{2+1}\begin{vmatrix}2 & -3\\ -2 & -4\end{vmatrix}\end{aligned}$$
+$$=4(-20+6)-5(-8-6)=-56+70=14.$$
+</div>
+<aside class="note">Khai triển theo cột 1: $|A|=\sum_k a_{k1}c_{k1}$; chỉ $a_{11}\ne0$ nên còn một số hạng. Định thức cấp 3 tiếp tục khai triển theo cột 1 (có số 0 ở dòng 3).</aside>
+</div>
+<div class="kq">$|A|=14$.</div>
+
+<h3 class="part">b)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|A| &\overset{\substack{d_2:=d_2+2d_1\\ d_3:=d_3-2d_1\\ d_4:=d_4+3d_1}}{=} \begin{vmatrix}1 & 3 & 2 & 4\\ 0 & 8 & 8 & 9\\ 0 & -4 & 1 & -4\\ 0 & 8 & 9 & 10\end{vmatrix}\\ &\overset{\text{cột }1}{=} \begin{vmatrix}8 & 8 & 9\\ -4 & 1 & -4\\ 8 & 9 & 10\end{vmatrix}\end{aligned}$$
+</div>
+<aside class="note">Như câu a): khử cột 1 bằng $a_{11}=1$ rồi khai triển theo cột 1 (hệ số $(-1)^{1+1}=1$).</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned} &\overset{d_3:=d_3-d_1}{=} \begin{vmatrix}8 & 8 & 9\\ -4 & 1 & -4\\ 0 & 1 & 1\end{vmatrix}\\ &\overset{c_2:=c_2-c_3}{=} \begin{vmatrix}8 & -1 & 9\\ -4 & 5 & -4\\ 0 & 0 & 1\end{vmatrix} \overset{\text{dòng }3}{=} 1\cdot\begin{vmatrix}8 & -1\\ -4 & 5\end{vmatrix} = 40-4\\ &= 36.\end{aligned}$$
+</div>
+<aside class="note">Tạo thêm số 0 trước khi tính để tránh nhân số lớn. Phép trên cột $c_2:=c_2-c_3$ cũng là loại 3 (giữ nguyên định thức). Dòng 3 chỉ còn $a_{33}=1$, hệ số $(-1)^{3+3}=1$.</aside>
+</div>
+<div class="kq">$|A|=36$.</div>
+
+<h3 class="part">c)</h3>
+<div class="step">
+<div class="work">
+$$|A|\overset{c_1:=c_1-2c_3}{=}\begin{vmatrix}0 & -4 & 4 & -3\\ 0 & 0 & 2 & 0\\ -1 & -1 & 1 & -5\\ -2 & 7 & 2 & 2\end{vmatrix}$$
+</div>
+<aside class="note">Dòng 2 $=(4,0,2,0)$ đã có hai số 0. Dùng phép trên <b>cột</b> để biến $4$ thành $0$: cột 1 trừ 2 lần cột 3. Dòng 2 còn duy nhất $a_{23}=2$.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned} &\overset{\text{dòng }2}{=} 2\cdot(-1)^{2+3}\begin{vmatrix}0 & -4 & -3\\ -1 & -1 & -5\\ -2 & 7 & 2\end{vmatrix}\\ &= -2\Big[(-1)(-1)^{2+1}\begin{vmatrix}-4 & -3\\ 7 & 2\end{vmatrix}+(-2)(-1)^{3+1}\begin{vmatrix}-4 & -3\\ -1 & -5\end{vmatrix}\Big]\end{aligned}$$
+$$=-2\big[13-2\cdot17\big]=-2\cdot(-21)=42.$$
+</div>
+<aside class="note">Ma trận con $A(2|3)$: bỏ dòng 2, cột 3. Dấu $(-1)^{2+3}=-1$. Định thức cấp 3 khai triển theo cột 1 (có $a_{11}=0$): $\begin{vmatrix}-4 & -3\\ 7 & 2\end{vmatrix}=13$, $\begin{vmatrix}-4 & -3\\ -1 & -5\end{vmatrix}=17$.</aside>
+</div>
+<div class="kq">$|A|=42$.</div>
+
+<h3 class="part">d)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|A| &\overset{\substack{d_2:=d_2-3d_1\\ d_3:=d_3-3d_1\\ d_4:=d_4-2d_1}}{=} \begin{vmatrix}6 & 4 & 1 & -8\\ -11 & -12 & 0 & 21\\ -16 & -14 & 0 & 26\\ -21 & -7 & 0 & 18\end{vmatrix}\\ &\overset{\text{cột }3}{=} 1\cdot(-1)^{1+3}\begin{vmatrix}-11 & -12 & 21\\ -16 & -14 & 26\\ -21 & -7 & 18\end{vmatrix}\end{aligned}$$
+</div>
+<aside class="note">Phần tử thuận lợi nhất là $a_{13}=1$ (không ở cột 1!). Khử cột 3 rồi khai triển theo cột 3.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned}&=\big[(-11)(-14)18+(-12)(26)(-21)+21(-16)(-7)\big]\\&\quad-\big[21(-14)(-21)+(-11)(26)(-7)+(-12)(-16)18\big]\end{aligned}$$
+$$\begin{aligned} &= (2772+6552+2352)-(6174+2002+3456) = 11676-11632\\ &= 44.\end{aligned}$$
+</div>
+<aside class="note">Sarrus cho định thức cấp 3. Có thể rút gọn trước (ví dụ rút 2 từ dòng 2), nhưng Sarrus trực tiếp vẫn nhanh.</aside>
+</div>
+<div class="kq">$|A|=44$.</div>
+</section>
+
+<section class="problem" id="bt2-5">
+<h2><span class="num">2.5</span> Định thức cấp năm</h2>
+<div class="de">Tính các định thức cấp năm sau:
+$$\text{a)}\begin{vmatrix}1 & 4 & 4 & -2 & 3\\ -3 & 3 & 0 & 3 & 0\\ -4 & 4 & 3 & 4 & 2\\ 5 & 2 & 3 & -1 & 4\\ 3 & 3 & 1 & 2 & 3\end{vmatrix};\quad \text{b)}\begin{vmatrix}2 & 4 & 5 & 4 & 2\\ 2 & 4 & 4 & 3 & 2\\ -4 & 3 & 3 & 2 & 3\\ 2 & -1 & -3 & -3 & 1\\ -3 & 3 & 3 & 0 & 2\end{vmatrix};\quad \text{c)}\begin{vmatrix}8 & 4 & 7 & 9 & -6\\ 3 & 3 & 5 & 4 & -1\\ 8 & 0 & 3 & 9 & -1\\ 1 & -4 & 2 & 0 & 9\\ 4 & -2 & 2 & 3 & 2\end{vmatrix}.$$</div>
+<div class="nhan-dang">Cùng chiến lược như 2.4, chỉ lặp lại nhiều lần: <b>tạo số 0 → khai triển → hạ cấp</b>. Quan sát kỹ để chọn dòng/cột có sẵn nhiều số 0 hoặc có phần tử $\pm1$, hoặc hai dòng/cột gần giống nhau (trừ nhau ra nhiều số 0).</div>
+
+<h3 class="part">a)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|A| &\overset{\substack{c_2:=c_2+c_1\\ c_4:=c_4+c_1}}{=} \begin{vmatrix}1 & 5 & 4 & -1 & 3\\ -3 & 0 & 0 & 0 & 0\\ -4 & 0 & 3 & 0 & 2\\ 5 & 7 & 3 & 4 & 4\\ 3 & 6 & 1 & 5 & 3\end{vmatrix}\\ &\overset{\text{dòng }2}{=} (-3)(-1)^{2+1}\begin{vmatrix}5 & 4 & -1 & 3\\ 0 & 3 & 0 & 2\\ 7 & 3 & 4 & 4\\ 6 & 1 & 5 & 3\end{vmatrix} = 3|B|.\end{aligned}$$
+</div>
+<aside class="note">Dòng 2 $=(-3,3,0,3,0)$: các số 3 ở cột 2, 4 triệt tiêu được với $-3$ ở cột 1 bằng phép <b>cột</b> loại 3. Sau đó dòng 2 chỉ còn $a_{21}=-3$.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|B| &\overset{c_2:=c_2-c_4}{=} \begin{vmatrix}5 & 1 & -1 & 3\\ 0 & 1 & 0 & 2\\ 7 & -1 & 4 & 4\\ 6 & -2 & 5 & 3\end{vmatrix}\\ &\overset{c_4:=c_4-2c_2}{=} \begin{vmatrix}5 & 1 & -1 & 1\\ 0 & 1 & 0 & 0\\ 7 & -1 & 4 & 6\\ 6 & -2 & 5 & 7\end{vmatrix}\\ &\overset{\text{dòng }2}{=} \begin{vmatrix}5 & -1 & 1\\ 7 & 4 & 6\\ 6 & 5 & 7\end{vmatrix}\end{aligned}$$
+</div>
+<aside class="note">Dòng 2 của $B$ là $(0,3,0,2)$; ta tạo phần tử 1 (bằng $c_2-c_4$) rồi khử số 2 còn lại. Phần tử $b_{22}=1$, dấu $(-1)^{2+2}=+1$.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned}&=(140-36+35)-(24+150-49)=139-125=14\\ &\Rightarrow\ |A|=3\cdot14=42.\end{aligned}$$
+</div>
+<aside class="note">Sarrus: xuôi $5\cdot4\cdot7,\ (-1)\cdot6\cdot6,\ 1\cdot7\cdot5$; ngược $1\cdot4\cdot6,\ 5\cdot6\cdot5,\ (-1)\cdot7\cdot7$.</aside>
+</div>
+<div class="kq">$|A|=42$.</div>
+
+<h3 class="part">b)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|A| &\overset{d_1:=d_1-d_2}{=} \begin{vmatrix}0 & 0 & 1 & 1 & 0\\ 2 & 4 & 4 & 3 & 2\\ -4 & 3 & 3 & 2 & 3\\ 2 & -1 & -3 & -3 & 1\\ -3 & 3 & 3 & 0 & 2\end{vmatrix}\\ &\overset{c_4:=c_4-c_3}{=} \begin{vmatrix}0 & 0 & 1 & 0 & 0\\ 2 & 4 & 4 & -1 & 2\\ -4 & 3 & 3 & -1 & 3\\ 2 & -1 & -3 & 0 & 1\\ -3 & 3 & 3 & -3 & 2\end{vmatrix}\end{aligned}$$
+</div>
+<aside class="note">Hai dòng đầu gần như giống nhau ⇒ trừ nhau cho dòng $(0,0,1,1,0)$. Thêm một phép cột nữa thì dòng 1 chỉ còn $a_{13}=1$.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned} &\overset{\text{dòng }1}{=} 1\cdot(-1)^{1+3}\begin{vmatrix}2 & 4 & -1 & 2\\ -4 & 3 & -1 & 3\\ 2 & -1 & 0 & 1\\ -3 & 3 & -3 & 2\end{vmatrix}\\ &\overset{\substack{c_1:=c_1-2c_4\\ c_2:=c_2+c_4}}{=} \begin{vmatrix}-2 & 6 & -1 & 2\\ -10 & 6 & -1 & 3\\ 0 & 0 & 0 & 1\\ -7 & 5 & -3 & 2\end{vmatrix}\end{aligned}$$
+</div>
+<aside class="note">Trong ma trận cấp 4, dòng 3 $=(2,-1,0,1)$ có số 1 ở cột 4 ⇒ dùng cột 4 khử hai phần tử $2$ và $-1$ của dòng 3.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned} &\overset{\text{dòng }3}{=} 1\cdot(-1)^{3+4}\begin{vmatrix}-2 & 6 & -1\\ -10 & 6 & -1\\ -7 & 5 & -3\end{vmatrix}\\ &\overset{d_2:=d_2-d_1}{=} -\begin{vmatrix}-2 & 6 & -1\\ -8 & 0 & 0\\ -7 & 5 & -3\end{vmatrix}\end{aligned}$$
+$$\begin{aligned} &= -\Big[(-8)(-1)^{2+1}\begin{vmatrix}6 & -1\\ 5 & -3\end{vmatrix}\Big]\\ &= -\big[8\cdot(-13)\big] = 104.\end{aligned}$$
+</div>
+<aside class="note">Dấu $(-1)^{3+4}=-1$ — rất dễ quên! Sau đó $d_2-d_1$ cho dòng chỉ còn một phần tử khác 0.</aside>
+</div>
+<div class="kq">$|A|=104$.</div>
+
+<h3 class="part">c)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|A| &\overset{\substack{d_1:=d_1-8d_4,\ d_2:=d_2-3d_4\\ d_3:=d_3-8d_4,\ d_5:=d_5-4d_4}}{=} \begin{vmatrix}0 & 36 & -9 & 9 & -78\\ 0 & 15 & -1 & 4 & -28\\ 0 & 32 & -13 & 9 & -73\\ 1 & -4 & 2 & 0 & 9\\ 0 & 14 & -6 & 3 & -34\end{vmatrix}\\ &\overset{\text{cột }1}{=} 1\cdot(-1)^{4+1}|B| = -|B|,\end{aligned}$$
+$$B=\begin{pmatrix}36 & -9 & 9 & -78\\ 15 & -1 & 4 & -28\\ 32 & -13 & 9 & -73\\ 14 & -6 & 3 & -34\end{pmatrix}.$$
+</div>
+<aside class="note">Phần tử $a_{41}=1$ là chuẩn tốt nhất. Khử cột 1, khai triển theo cột 1 với dấu $(-1)^{4+1}=-1$.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|B| &\overset{\substack{d_1:=d_1-9d_2\\ d_3:=d_3-13d_2\\ d_4:=d_4-6d_2}}{=} \begin{vmatrix}-99 & 0 & -27 & 174\\ 15 & -1 & 4 & -28\\ -163 & 0 & -43 & 291\\ -76 & 0 & -21 & 134\end{vmatrix}\\ &\overset{\text{cột }2}{=} (-1)(-1)^{2+2}|C| = -|C|,\end{aligned}$$
+$$C=\begin{pmatrix}-99 & -27 & 174\\ -163 & -43 & 291\\ -76 & -21 & 134\end{pmatrix}.$$
+</div>
+<aside class="note">Trong $B$, phần tử $b_{22}=-1$ là chuẩn (chia cho $\pm1$ không sinh phân số).</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|C| &\overset{\substack{d_1:=d_1-d_3\\ d_2:=d_2-2d_3}}{=} \begin{vmatrix}-23 & -6 & 40\\ -11 & -1 & 23\\ -76 & -21 & 134\end{vmatrix}\\ &\overset{\substack{d_1:=d_1-6d_2\\ d_3:=d_3-21d_2}}{=} \begin{vmatrix}43 & 0 & -98\\ -11 & -1 & 23\\ 155 & 0 & -349\end{vmatrix}\end{aligned}$$
+$$\begin{aligned} &\overset{\text{cột }2}{=} (-1)\begin{vmatrix}43 & -98\\ 155 & -349\end{vmatrix}\\ &= -(-15007+15190) = -183.\end{aligned}$$
+</div>
+<aside class="note">Các số lớn ⇒ trừ các dòng để làm nhỏ hệ số trước, tạo ra $-1$ ở cột 2 rồi khử cột 2. Cuối cùng $|B|=-|C|=183$, $|A|=-|B|$.</aside>
+</div>
+<div class="kq">$|A|=-|B|=-183$.</div>
+</section>
+
+<section class="problem" id="bt2-6">
+<h2><span class="num">2.6</span> Định thức cấp n</h2>
+<div class="de">Tính các định thức cấp $n$ sau:
+$$\text{a)}\ \begin{vmatrix}1 & 2 & 2 & \dots & 2\\ 2 & 2 & 2 & \dots & 2\\ 2 & 2 & 3 & \dots & 2\\ \dots & \dots & \dots & \dots & \dots\\ 2 & 2 & 2 & \dots & n\end{vmatrix};\qquad \text{b)}\ \begin{vmatrix}a_1+1 & a_2 & a_3 & \dots & a_n\\ a_1 & a_2+1 & a_3 & \dots & a_n\\ a_1 & a_2 & a_3+1 & \dots & a_n\\ \dots & \dots & \dots & \dots & \dots\\ a_1 & a_2 & a_3 & \dots & a_n+1\end{vmatrix};$$
+$$\text{c)}\ \begin{vmatrix}1 & 2 & \dots & n-1 & n\\ 2 & 3 & \dots & n & 1\\ \dots & \dots & \dots & \dots & \dots\\ n-1 & n & \dots & n-3 & n-2\\ n & 1 & \dots & n-2 & n-1\end{vmatrix};\qquad \text{d)}\ \begin{vmatrix}x_1y_1+1 & x_1y_2+1 & \dots & x_1y_n+1\\ x_2y_1+1 & x_2y_2+1 & \dots & x_2y_n+1\\ \dots & \dots & \dots & \dots\\ x_ny_1+1 & x_ny_2+1 & \dots & x_ny_n+1\end{vmatrix}.$$</div>
+<div class="nhan-dang">Định thức cấp $n$ tổng quát không thể "tính từng số". Ý tưởng chung: dùng phép loại 3 (không đổi định thức) để đưa về <b>ma trận tam giác</b> (định thức = tích đường chéo) hoặc tạo dòng/cột có nhiều số 0. Các mẹo hay dùng: (1) trừ một dòng "mẫu" khỏi mọi dòng khác khi các dòng gần giống nhau; (2) cộng tất cả các cột vào cột 1 khi tổng mỗi dòng bằng nhau, rồi rút thừa số chung.</div>
+
+<h3 class="part">a) Đường chéo $1,2,\dots,n$, ngoài đường chéo bằng 2</h3>
+<div class="step">
+<div class="work">
+<p>Với $n=1$: $D_1=|1|=1$. Xét $n\ge 2$. Thực hiện $d_i:=d_i-d_2$ với mọi $i\ne 2$:</p>
+$$D_n\overset{d_i:=d_i-d_2\ (i\ne2)}{=}\begin{vmatrix}-1 & 0 & 0 & \dots & 0\\ 2 & 2 & 2 & \dots & 2\\ 0 & 0 & 1 & \dots & 0\\ \dots & \dots & \dots & \dots & \dots\\ 0 & 0 & 0 & \dots & n-2\end{vmatrix}$$
+</div>
+<aside class="note">Dòng 2 toàn số 2 là "dòng mẫu": mọi dòng khác chỉ khác dòng 2 đúng ở vị trí đường chéo. Trừ đi, dòng $i$ còn duy nhất phần tử $i-2$ ở cột $i$ (dòng 1 còn $1-2=-1$).</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned} &\overset{\text{dòng }1}{=} (-1)(-1)^{1+1}\begin{vmatrix}2 & 2 & \dots & 2\\ 0 & 1 & \dots & 0\\ \dots & \dots & \dots & \dots\\ 0 & 0 & \dots & n-2\end{vmatrix}\\ &= -\big(2\cdot1\cdot2\cdots(n-2)\big) = -2\,(n-2)!.\end{aligned}$$
+</div>
+<aside class="note">Sau khi bỏ dòng 1, cột 1 ta được ma trận <b>tam giác trên</b> cấp $n-1$ (dòng đầu toàn 2, bên dưới chỉ có đường chéo) ⇒ định thức bằng tích đường chéo $2\cdot1\cdot2\cdot3\cdots(n-2)$.</aside>
+</div>
+<div class="step full"><div class="work">Kiểm tra: $n=2$: $\begin{vmatrix}1 & 2\\ 2 & 2\end{vmatrix}=-2=-2\cdot0!$ ✓; $n=3$: $-2$; $n=4$: $-4$; $n=5$: $-12$ (đã kiểm tra bằng máy đến $n=7$).</div></div>
+<div class="kq">$D_1=1$; $D_n=-2\,(n-2)!$ với $n\ge 2$.</div>
+
+<h3 class="part">b) $A=$ "mọi dòng bằng $(a_1,\dots,a_n)$" cộng thêm $1$ trên đường chéo</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}D &\overset{c_1:=c_1+c_2+\dots+c_n}{=} \begin{vmatrix}S & a_2 & \dots & a_n\\ S & a_2+1 & \dots & a_n\\ \dots & \dots & \dots & \dots\\ S & a_2 & \dots & a_n+1\end{vmatrix}\\ &= S\begin{vmatrix}1 & a_2 & \dots & a_n\\ 1 & a_2+1 & \dots & a_n\\ \dots & \dots & \dots & \dots\\ 1 & a_2 & \dots & a_n+1\end{vmatrix},\\ S &= 1+a_1+\dots+a_n.\end{aligned}$$
+</div>
+<aside class="note">Tổng các phần tử trên mỗi dòng đều bằng $S=1+a_1+\dots+a_n$. Cộng mọi cột vào cột 1 (phép loại 3, giữ nguyên định thức) làm cột 1 toàn $S$ ⇒ rút $S$ ra ngoài (tính chất nhân một cột với hằng số).</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned} &\overset{d_i:=d_i-d_1\ (i\ge2)}{=} S\begin{vmatrix}1 & a_2 & \dots & a_n\\ 0 & 1 & \dots & 0\\ \dots & \dots & \dots & \dots\\ 0 & 0 & \dots & 1\end{vmatrix} = S\cdot 1\\ &= 1+a_1+a_2+\dots+a_n.\end{aligned}$$
+</div>
+<aside class="note">Dòng $i$ chỉ khác dòng 1 ở chỗ $+1$ tại cột $i$ ⇒ hiệu là $(0,\dots,1,\dots,0)$. Ma trận thu được là tam giác trên với đường chéo toàn 1.</aside>
+</div>
+<div class="kq">$D=1+a_1+a_2+\dots+a_n$.</div>
+
+<h3 class="part">c) Ma trận "dịch vòng"</h3>
+<div class="step">
+<div class="work">
+<p>Dòng $k$ là dãy $k,k+1,\dots,n,1,\dots,k-1$ (dòng trên dịch trái 1 vị trí). Với $n=1$: $D=1$. Xét $n\ge2$.</p>
+$$D\overset{c_1:=c_1+c_2+\dots+c_n}{=}\frac{n(n+1)}{2}\begin{vmatrix}1 & 2 & \dots & n-1 & n\\ 1 & 3 & \dots & n & 1\\ \dots & \dots & \dots & \dots & \dots\\ 1 & 1 & \dots & n-2 & n-1\end{vmatrix}$$
+</div>
+<aside class="note">Mỗi dòng là một hoán vị của $1,2,\dots,n$ nên tổng mỗi dòng $=1+2+\dots+n=\frac{n(n+1)}2$. Cộng mọi cột vào cột 1 rồi rút thừa số chung.</aside>
+</div>
+<div class="step">
+<div class="work">
+<p>Lần lượt từ dưới lên: $d_n:=d_n-d_{n-1},\ d_{n-1}:=d_{n-1}-d_{n-2},\dots,d_2:=d_2-d_1$. Vì dòng $k$ hơn dòng $k-1$ đúng 1 đơn vị ở mọi vị trí, trừ vị trí dòng $k-1$ bằng $n$ (khi đó dòng $k$ bằng 1, hiệu $=1-n$):</p>
+$$D=\frac{n(n+1)}{2}\begin{vmatrix}1 & 2 & 3 & \dots & n\\ 0 & 1 & 1 & \dots & 1-n\\ 0 & 1 & \dots & 1-n & 1\\ \dots & \dots & \dots & \dots & \dots\\ 0 & 1-n & 1 & \dots & 1\end{vmatrix}\overset{\text{cột }1}{=}\frac{n(n+1)}{2}\,|B|,$$
+<p>với $B$ cấp $m=n-1$: mọi phần tử bằng 1, trừ các phần tử bằng $1-n$ nằm trên <b>đường chéo phụ</b>.</p>
+</div>
+<aside class="note">Làm từ dưới lên để mỗi phép trừ dùng dòng <i>gốc</i> phía trên (chưa bị sửa). Cột 1 toàn số 1 nên hiệu bằng 0 ⇒ khai triển theo cột 1 chỉ còn $1\cdot|B|$.</aside>
+</div>
+<div class="step">
+<div class="work">
+<p>Đảo ngược thứ tự các dòng của $B$ (cần $\lfloor m/2\rfloor$ phép đổi chỗ $d_1\leftrightarrow d_m,\ d_2\leftrightarrow d_{m-1},\dots$) thì các phần tử $1-n$ về <b>đường chéo chính</b>:</p>
+$$|B|=(-1)^{\lfloor \frac{n-1}2\rfloor}\begin{vmatrix}1-n & 1 & \dots & 1\\ 1 & 1-n & \dots & 1\\ \dots & \dots & \dots & \dots\\ 1 & 1 & \dots & 1-n\end{vmatrix}_{(n-1)}.$$
+</div>
+<aside class="note">Mỗi lần đổi chỗ hai dòng nhân thêm $-1$. Số lần đổi chỗ khi đảo ngược $m$ dòng là $\lfloor m/2\rfloor$, và $(-1)^{\lfloor m/2\rfloor}=(-1)^{m(m-1)/2}$.</aside>
+</div>
+<div class="step">
+<div class="work">
+<p>Định thức cấp $m=n-1$ này có tổng mỗi dòng $=(m-1)+(1-n)=-1$:</p>
+$$\begin{aligned} &\overset{c_1:=\sum c_j}{=} (-1)\begin{vmatrix}1 & 1 & \dots & 1\\ 1 & 1-n & \dots & 1\\ \dots & \dots & \dots & \dots\\ 1 & 1 & \dots & 1-n\end{vmatrix}\\ &\overset{d_i:=d_i-d_1}{=} (-1)\begin{vmatrix}1 & 1 & \dots & 1\\ 0 & -n & \dots & 0\\ \dots & \dots & \dots & \dots\\ 0 & 0 & \dots & -n\end{vmatrix}\\ &= (-1)(-n)^{n-2}.\end{aligned}$$
+</div>
+<aside class="note">Lại dùng mẹo "cộng cột" như câu b), rồi trừ dòng 1 để được ma trận tam giác: đường chéo gồm một số $1$ và $n-2$ số $-n$.</aside>
+</div>
+<div class="step">
+<div class="work">
+<p>Ghép lại (số mũ của $-1$: $\frac{(n-1)(n-2)}2+1+(n-2)\equiv\frac{n(n-1)}2\pmod 2$):</p>
+$$\begin{aligned}D &= \frac{n(n+1)}2\cdot(-1)^{\frac{(n-1)(n-2)}2}\cdot(-1)\cdot(-n)^{n-2}\\ &= (-1)^{\frac{n(n-1)}{2}}\,\frac{(n+1)\,n^{\,n-1}}{2}.\end{aligned}$$
+</div>
+<aside class="note">Kiểm tra: $n=2$: $\begin{vmatrix}1 & 2\\ 2 & 1\end{vmatrix}=-3$ ✓; $n=3$: $\begin{vmatrix}1 & 2 & 3\\ 2 & 3 & 1\\ 3 & 1 & 2\end{vmatrix}=-18$ ✓; $n=4$: $160$ ✓ (máy kiểm tra đến $n=7$). Công thức cũng đúng với $n=1$.</aside>
+</div>
+<div class="kq">$D=(-1)^{\frac{n(n-1)}{2}}\dfrac{(n+1)n^{n-1}}{2}$.</div>
+
+<h3 class="part">d) Phần tử $x_iy_j+1$</h3>
+<div class="step">
+<div class="work">
+<p><b>$n=1$:</b> $D=x_1y_1+1$. <b>$n=2$:</b></p>
+$$\begin{aligned}D &= (x_1y_1+1)(x_2y_2+1)-(x_1y_2+1)(x_2y_1+1)\\ &= x_1y_1+x_2y_2-x_1y_2-x_2y_1 = (x_1-x_2)(y_1-y_2).\end{aligned}$$
+</div>
+<aside class="note">Cấp 2 dùng định nghĩa; các số hạng $x_1x_2y_1y_2$ và $1$ triệt tiêu nhau.</aside>
+</div>
+<div class="step">
+<div class="work">
+<p><b>$n\ge 3$:</b> dòng $i$ là $x_i(y_1,\dots,y_n)+(1,\dots,1)$. Làm $d_i:=d_i-d_1$ ($i\ge2$):</p>
+$$\text{dòng }i\ \text{mới}=(x_i-x_1)\,(y_1,y_2,\dots,y_n),\quad i=2,\dots,n.$$
+<ul>
+<li>Nếu $x_2=x_1$: dòng 2 mới bằng 0 ⇒ $D=0$.</li>
+<li>Nếu $x_2\ne x_1$: thực hiện $d_3:=d_3-\dfrac{x_3-x_1}{x_2-x_1}d_2$ ⇒ dòng 3 bằng 0 ⇒ $D=0$.</li>
+</ul>
+</div>
+<aside class="note">Bản chất: sau khi trừ dòng 1, các dòng 2, 3 đều tỉ lệ với cùng một vectơ $(y_1,\dots,y_n)$, nên khử được một dòng thành 0 (phép loại 3). Ma trận có dòng 0 ⇒ định thức bằng 0. Cần $n\ge3$ để có ít nhất hai dòng như vậy.</aside>
+</div>
+<div class="kq">$D=x_1y_1+1$ ($n=1$); $D=(x_1-x_2)(y_1-y_2)$ ($n=2$); $D=0$ ($n\ge3$).</div>
+</section>
+
+<section class="problem" id="bt2-7">
+<h2><span class="num">2.7</span> Tìm x để định thức bằng 0</h2>
+<div class="de">Tìm các giá trị của $x$ để các định thức sau bằng 0:
+$$\text{a)}\begin{vmatrix}-1 & x & x\\ x & -1 & x\\ x & x & -1\end{vmatrix};\ \text{b)}\begin{vmatrix}1 & x^2 & x\\ x & 1 & x^2\\ x^2 & x & 1\end{vmatrix};\ \text{c)}\begin{vmatrix}x+3 & 0 & 1\\ 5 & x-3 & 2\\ 6 & -6 & x+4\end{vmatrix};\ \text{d)}\begin{vmatrix}x+2 & 2x+3 & 3x+4\\ 2x+3 & 3x+4 & 4x+5\\ 3x+5 & 5x+8 & 8x+13\end{vmatrix}.$$</div>
+<div class="nhan-dang">Định thức chứa tham số ⇒ mục tiêu là đưa về dạng <b>tích các nhân tử</b> (không khai triển bừa thành đa thức bậc 3 rồi mò nghiệm). Dùng phép loại 3 để làm xuất hiện nhân tử chung trên một dòng/cột rồi rút ra.</div>
+
+<h3 class="part">a)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}D &\overset{c_1:=c_1+c_2+c_3}{=} (2x-1)\begin{vmatrix}1 & x & x\\ 1 & -1 & x\\ 1 & x & -1\end{vmatrix}\\ &\overset{\substack{d_2:=d_2-d_1\\ d_3:=d_3-d_1}}{=} (2x-1)\begin{vmatrix}1 & x & x\\ 0 & -1-x & 0\\ 0 & 0 & -1-x\end{vmatrix}\\ &= (2x-1)(x+1)^2.\end{aligned}$$
+</div>
+<aside class="note">Tổng mỗi dòng $=2x-1$ ⇒ cộng cột rồi rút $(2x-1)$. Sau đó ma trận tam giác: định thức = tích đường chéo $1\cdot(-1-x)^2$.</aside>
+</div>
+<div class="kq">$D=0\Leftrightarrow x=\tfrac12$ hoặc $x=-1$.</div>
+
+<h3 class="part">b)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}D &\overset{c_1:=c_1+c_2+c_3}{=} (1+x+x^2)\begin{vmatrix}1 & x^2 & x\\ 1 & 1 & x^2\\ 1 & x & 1\end{vmatrix}\\ &\overset{\substack{d_2:=d_2-d_1\\ d_3:=d_3-d_1}}{=} (1+x+x^2)\begin{vmatrix}1-x^2 & x^2-x\\ x-x^2 & 1-x\end{vmatrix}\end{aligned}$$
+</div>
+<aside class="note">Tổng mỗi dòng $=1+x+x^2$. Sau khi trừ dòng 1, cột 1 là $(1,0,0)^\top$ ⇒ khai triển theo cột 1 còn định thức cấp 2.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned} &= (1+x+x^2)(1-x)^2\begin{vmatrix}1+x & -x\\ x & 1\end{vmatrix}\\ &= (1+x+x^2)^2(1-x)^2.\end{aligned}$$
+</div>
+<aside class="note">Rút $(1-x)$ từ dòng 1 (vì $1-x^2=(1-x)(1+x)$, $x^2-x=-x(1-x)$) và từ dòng 2. Định thức còn lại $=1+x+x^2$.</aside>
+</div>
+<div class="kq">Vì $1+x+x^2=(x+\tfrac12)^2+\tfrac34\gt 0$ với mọi $x\in\R$: $D=0\Leftrightarrow x=1$.</div>
+
+<h3 class="part">c)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}D&=(x+3)(x-3)(x+4)+0+1\cdot5\cdot(-6)\\&\quad-\big[1\cdot(x-3)\cdot6+(x+3)\cdot2\cdot(-6)+0\big]\end{aligned}$$
+$$\begin{aligned} &= (x^2-9)(x+4)-30-6x+18+12x+36\\ &= (x^2-9)(x+4)+6(x+4) = (x+4)(x^2-3).\end{aligned}$$
+</div>
+<aside class="note">Sarrus. Mẹo: gom các số hạng còn lại thành $6x+24=6(x+4)$ để thấy nhân tử chung $(x+4)$ — không cần khai triển $(x^2-9)(x+4)$.</aside>
+</div>
+<div class="kq">$D=0\Leftrightarrow x=-4$ hoặc $x=\pm\sqrt3$.</div>
+
+<h3 class="part">d)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}D &\overset{\substack{c_3:=c_3-c_2\\ c_2:=c_2-c_1}}{=} \begin{vmatrix}x+2 & x+1 & x+1\\ 2x+3 & x+1 & x+1\\ 3x+5 & 2x+3 & 3x+5\end{vmatrix}\\ &\overset{c_3:=c_3-c_2}{=} \begin{vmatrix}x+2 & x+1 & 0\\ 2x+3 & x+1 & 0\\ 3x+5 & 2x+3 & x+2\end{vmatrix}\end{aligned}$$
+</div>
+<aside class="note">Các cột là cấp số cộng "gần đúng" ⇒ lấy hiệu các cột liên tiếp làm đơn giản (làm $c_3-c_2$ trước, khi $c_2$ còn là cột gốc). Hai cột 2, 3 mới trùng nhau ở hai dòng đầu ⇒ trừ tiếp được hai số 0.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned} &\overset{\text{cột }3}{=} (x+2)\begin{vmatrix}x+2 & x+1\\ 2x+3 & x+1\end{vmatrix}\\ &= (x+2)(x+1)\big[(x+2)-(2x+3)\big] = -(x+2)(x+1)^2.\end{aligned}$$
+</div>
+<aside class="note">Khai triển theo cột 3 (chỉ còn $a_{33}=x+2$, dấu $+$). Rút $(x+1)$ từ cột 2 của định thức cấp 2.</aside>
+</div>
+<div class="kq">$D=0\Leftrightarrow x=-1$ hoặc $x=-2$.</div>
+</section>
+
+<section class="problem" id="bt2-8">
+<h2><span class="num">2.8</span> Chứng minh đẳng thức định thức</h2>
+<div class="de">Cho $A,B\in M_n(\R)$. Chứng minh rằng: a) $\det(AB)=\det(BA)$. b) Nếu $B$ khả nghịch thì $\det(B^{-1}AB)=\det A$.</div>
+<div class="nhan-dang">Chú ý $AB\ne BA$ nói chung, nhưng định thức là <b>số thực</b>. Công cụ: định lý $|AB|=|A||B|$ biến tích ma trận thành tích số (giao hoán được).</div>
+<h3 class="part">a)</h3>
+<div class="step">
+<div class="work">$$\det(AB)=\det A\cdot\det B=\det B\cdot\det A=\det(BA).$$</div>
+<aside class="note">Bước giữa: phép nhân hai <b>số thực</b> có tính giao hoán (khác hẳn phép nhân ma trận).</aside>
+</div>
+<h3 class="part">b)</h3>
+<div class="step">
+<div class="work">$$\begin{aligned}\det(B^{-1}AB) &= \det(B^{-1})\det A\det B\\ &= \det A\cdot\det(B^{-1})\det B\\ &= \det A\cdot\det(B^{-1}B)= \det A\cdot\det I_n = \det A.\end{aligned}$$</div>
+<aside class="note">Áp dụng $|XY|=|X||Y|$ hai lần, đổi thứ tự các thừa số (là số), rồi gộp lại $\det(B^{-1})\det B=\det(B^{-1}B)=\det I_n=1$.</aside>
+</div>
+<div class="kq">∴ Hai đẳng thức được chứng minh.</div>
+</section>
+
+<h2 class="group">Phần 2. Ma trận phụ hợp và ma trận nghịch đảo (2.9 – 2.13)</h2>
+
+<section class="problem" id="bt2-9">
+<h2><span class="num">2.9</span> Ma trận phụ hợp</h2>
+<div class="de">Tìm ma trận phụ hợp (hay ma trận phó) của các ma trận sau:
+$$\text{a)}\begin{pmatrix}7 & 3\\ 5 & 8\end{pmatrix};\quad \text{b)}\begin{pmatrix}2 & 3 & 4\\ 5 & 6 & 7\\ 8 & 9 & 1\end{pmatrix};\quad \text{c)}\begin{pmatrix}3 & 2 & 1\\ 4 & 5 & 2\\ 2 & 1 & 4\end{pmatrix};\quad \text{d)}\begin{pmatrix}1 & 1 & 2 & 2\\ 1 & 3 & 2 & 3\\ -1 & 2 & 2 & 1\\ 1 & 3 & 2 & -1\end{pmatrix}.$$</div>
+<div class="nhan-dang">Theo định nghĩa: tính <b>mọi</b> phần bù đại số $c_{ij}=(-1)^{i+j}|A(i|j)|$, xếp thành $C=(c_{ij})$, rồi <b>chuyển vị</b>: $\operatorname{adj}(A)=C^\top$. Dấu $(-1)^{i+j}$ xen kẽ theo bàn cờ $\begin{pmatrix}+ & - & +\\ - & + & -\\ + & - & +\end{pmatrix}$. Kiểm tra nhanh: $\sum_k a_{1k}c_{1k}$ phải bằng $|A|$.</div>
+
+<h3 class="part">a)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}c_{11} &= 8,\ c_{12} = -5,\ c_{21} = -3,\ c_{22} = 7\ \Rightarrow \ C\\ &= \begin{pmatrix}8 & -5\\ -3 & 7\end{pmatrix},\\ \operatorname{adj}(A) &= C^\top = \begin{pmatrix}8 & -3\\ -5 & 7\end{pmatrix}.\end{aligned}$$
+</div>
+<aside class="note">Với $n=2$, $A(i|j)$ là ma trận $1\times1$ (một số). Quy tắc nhớ: $\operatorname{adj}\begin{pmatrix}a & b\\ c & d\end{pmatrix}=\begin{pmatrix}d & -b\\ -c & a\end{pmatrix}$ (đổi chỗ đường chéo chính, đổi dấu đường chéo phụ).</aside>
+</div>
+
+<h3 class="part">b)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}c_{11} &= +\begin{vmatrix}6 & 7\\ 9 & 1\end{vmatrix} = -57,\ c_{12}\\ &= -\begin{vmatrix}5 & 7\\ 8 & 1\end{vmatrix} = 51,\ c_{13}\\ &= +\begin{vmatrix}5 & 6\\ 8 & 9\end{vmatrix} = -3,\end{aligned}$$
+$$\begin{aligned}c_{21} &= -\begin{vmatrix}3 & 4\\ 9 & 1\end{vmatrix} = 33,\ c_{22}\\ &= +\begin{vmatrix}2 & 4\\ 8 & 1\end{vmatrix} = -30,\ c_{23}\\ &= -\begin{vmatrix}2 & 3\\ 8 & 9\end{vmatrix} = 6,\end{aligned}$$
+$$\begin{aligned}c_{31} &= +\begin{vmatrix}3 & 4\\ 6 & 7\end{vmatrix} = -3,\ c_{32}\\ &= -\begin{vmatrix}2 & 4\\ 5 & 7\end{vmatrix} = 6,\ c_{33}\\ &= +\begin{vmatrix}2 & 3\\ 5 & 6\end{vmatrix} = -3.\end{aligned}$$
+</div>
+<aside class="note">$A(i|j)$: che dòng $i$ và cột $j$, phần còn lại là định thức cấp 2. Dấu lấy theo bàn cờ.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\operatorname{adj}(A)=C^\top=\begin{pmatrix}-57 & 33 & -3\\ 51 & -30 & 6\\ -3 & 6 & -3\end{pmatrix}.$$
+</div>
+<aside class="note">Kiểm tra: $|A|=2(-57)+3\cdot51+4(-3)=27$ (khai triển theo dòng 1). Đừng quên chuyển vị: dòng $i$ của $C$ thành cột $i$ của $\operatorname{adj}(A)$.</aside>
+</div>
+
+<h3 class="part">c)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}C &= \begin{pmatrix}+\begin{vmatrix}5 & 2\\ 1 & 4\end{vmatrix} & -\begin{vmatrix}4 & 2\\ 2 & 4\end{vmatrix} & +\begin{vmatrix}4 & 5\\ 2 & 1\end{vmatrix}\\[4pt] -\begin{vmatrix}2 & 1\\ 1 & 4\end{vmatrix} & +\begin{vmatrix}3 & 1\\ 2 & 4\end{vmatrix} & -\begin{vmatrix}3 & 2\\ 2 & 1\end{vmatrix}\\[4pt] +\begin{vmatrix}2 & 1\\ 5 & 2\end{vmatrix} & -\begin{vmatrix}3 & 1\\ 4 & 2\end{vmatrix} & +\begin{vmatrix}3 & 2\\ 4 & 5\end{vmatrix}\end{pmatrix}\\ &= \begin{pmatrix}18 & -12 & -6\\ -7 & 10 & 1\\ -1 & -2 & 7\end{pmatrix}\end{aligned}$$
+$$\operatorname{adj}(A)=C^\top=\begin{pmatrix}18 & -7 & -1\\ -12 & 10 & -2\\ -6 & 1 & 7\end{pmatrix}.$$
+</div>
+<aside class="note">Cùng quy trình. Kiểm tra: $|A|=3\cdot18+2(-12)+1(-6)=24$.</aside>
+</div>
+
+<h3 class="part">d)</h3>
+<div class="step">
+<div class="work">
+<p>Các định thức con cấp 3 $|A(i|j)|$ (dòng $i$, cột $j$):</p>
+<table class="t">
+<tr><th></th><th>$j=1$</th><th>$j=2$</th><th>$j=3$</th><th>$j=4$</th></tr>
+<tr><th>$i=1$</th><td>$-8$</td><td>$-16$</td><td>$-20$</td><td>$0$</td></tr>
+<tr><th>$i=2$</th><td>$2$</td><td>$-12$</td><td>$-15$</td><td>$-8$</td></tr>
+<tr><th>$i=3$</th><td>$16$</td><td>$0$</td><td>$-8$</td><td>$0$</td></tr>
+<tr><th>$i=4$</th><td>$6$</td><td>$-4$</td><td>$3$</td><td>$8$</td></tr>
+</table>
+<p>Ví dụ: $|A(1|1)|=\begin{vmatrix}3 & 2 & 3\\ 2 & 2 & 1\\ 3 & 2 & -1\end{vmatrix}=(-6+6+12)-(18+6-4)=-8$.</p>
+</div>
+<aside class="note">Cấp 4 ⇒ 16 định thức cấp 3, mỗi cái tính bằng Sarrus. Bảng này là định thức con <b>chưa có dấu</b>; dấu $(-1)^{i+j}$ thêm ở bước sau.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned}C &= \begin{pmatrix}-8 & 16 & -20 & 0\\ -2 & -12 & 15 & -8\\ 16 & 0 & -8 & 0\\ -6 & -4 & -3 & 8\end{pmatrix},\\ \operatorname{adj}(A) &= C^\top = \begin{pmatrix}-8 & -2 & 16 & -6\\ 16 & -12 & 0 & -4\\ -20 & 15 & -8 & -3\\ 0 & -8 & 0 & 8\end{pmatrix}.\end{aligned}$$
+</div>
+<aside class="note">Nhân dấu bàn cờ: các vị trí $i+j$ lẻ đổi dấu. Kiểm tra: $|A|=1(-8)+1\cdot16+2(-20)+2\cdot0=-32$.</aside>
+</div>
+<div class="kq">a) $\begin{pmatrix}8 & -3\\ -5 & 7\end{pmatrix}$; b) $\begin{pmatrix}-57 & 33 & -3\\ 51 & -30 & 6\\ -3 & 6 & -3\end{pmatrix}$; c) $\begin{pmatrix}18 & -7 & -1\\ -12 & 10 & -2\\ -6 & 1 & 7\end{pmatrix}$; d) $\begin{pmatrix}-8 & -2 & 16 & -6\\ 16 & -12 & 0 & -4\\ -20 & 15 & -8 & -3\\ 0 & -8 & 0 & 8\end{pmatrix}$.</div>
+<div class="canh-bao">Sai lầm phổ biến nhất: quên chuyển vị $C$ (viết $\operatorname{adj}(A)=C$). Kiểm tra bằng $A\cdot\operatorname{adj}(A)=|A|I_n$.</div>
+</section>
+
+<section class="problem" id="bt2-10">
+<h2><span class="num">2.10</span> Nghịch đảo bằng công thức định thức</h2>
+<div class="de">Tìm nghịch đảo của các ma trận trong Bài tập 2.9 bằng cách áp dụng công thức định thức.</div>
+<div class="nhan-dang">Định lý: $A$ khả nghịch $\Leftrightarrow |A|\ne0$, và $A^{-1}=\dfrac{1}{|A|}\operatorname{adj}(A)$. Đã có $\operatorname{adj}(A)$ ở 2.9, chỉ cần $|A|$ (lấy ngay từ khai triển dòng 1 bằng các $c_{1k}$ đã tính).</div>
+<div class="step">
+<div class="work">
+<p><b>a)</b> $|A|=7\cdot8-3\cdot5=41\ne0$:</p>
+$$A^{-1}=\frac{1}{41}\begin{pmatrix}8 & -3\\ -5 & 7\end{pmatrix}.$$
+<p><b>b)</b> $|A|=27\ne0$:</p>
+$$\begin{aligned}A^{-1} &= \frac{1}{27}\begin{pmatrix}-57 & 33 & -3\\ 51 & -30 & 6\\ -3 & 6 & -3\end{pmatrix}\\ &= \frac19\begin{pmatrix}-19 & 11 & -1\\ 17 & -10 & 2\\ -1 & 2 & -1\end{pmatrix}.\end{aligned}$$
+</div>
+<aside class="note">$|A|=\sum_k a_{1k}c_{1k}$ dùng lại các phần bù đại số của dòng 1. Ở b) mọi phần tử của adj chia hết cho 3 nên rút gọn được $\frac{3}{27}=\frac19$.</aside>
+</div>
+<div class="step">
+<div class="work">
+<p><b>c)</b> $|A|=24\ne0$:</p>
+$$A^{-1}=\frac{1}{24}\begin{pmatrix}18 & -7 & -1\\ -12 & 10 & -2\\ -6 & 1 & 7\end{pmatrix}.$$
+<p><b>d)</b> $|A|=-32\ne0$:</p>
+$$\begin{aligned}A^{-1} &= -\frac{1}{32}\begin{pmatrix}-8 & -2 & 16 & -6\\ 16 & -12 & 0 & -4\\ -20 & 15 & -8 & -3\\ 0 & -8 & 0 & 8\end{pmatrix}\\ &= \frac{1}{32}\begin{pmatrix}8 & 2 & -16 & 6\\ -16 & 12 & 0 & 4\\ 20 & -15 & 8 & 3\\ 0 & 8 & 0 & -8\end{pmatrix}.\end{aligned}$$
+</div>
+<aside class="note">Kiểm tra (đã làm bằng máy): $A\cdot A^{-1}=I$. Ví dụ c), phần tử $(1,1)$: $\frac{1}{24}(3\cdot18+2(-12)+1(-6))=\frac{24}{24}=1$.</aside>
+</div>
+<div class="kq">Cả 4 ma trận đều khả nghịch, nghịch đảo như trên.</div>
+</section>
+
+<section class="problem" id="bt2-11">
+<h2><span class="num">2.11</span> Điều kiện khả nghịch theo tham số</h2>
+<div class="de">Tìm điều kiện của tham số để các ma trận sau khả nghịch, sau đó tìm ma trận nghịch đảo tương ứng của nó.
+$$\text{a)}\begin{pmatrix}m & 1\\ 1 & m\end{pmatrix};\quad \text{b)}\begin{pmatrix}1 & m & 1\\ 1 & 1 & m\\ m & 1 & 1\end{pmatrix};\quad \text{c)}\begin{pmatrix}1 & 1 & 0\\ 1 & 2 & m\\ m & 2 & 1\end{pmatrix};\quad \text{d)}\begin{pmatrix}1 & -3 & 2\\ 3 & -7 & m+5\\ -m & 2m & 1\end{pmatrix}.$$</div>
+<div class="nhan-dang">Hai bước: (1) $A$ khả nghịch $\Leftrightarrow |A|\ne0$ ⇒ tính $|A|$ dưới dạng <b>tích nhân tử</b> theo $m$ để đọc ngay giá trị cấm; (2) với $m$ thỏa điều kiện, $A^{-1}=\frac1{|A|}\operatorname{adj}(A)$ (phương pháp định thức rất hợp với ma trận chứa tham số vì không phải chia cho biểu thức có thể bằng 0 giữa chừng).</div>
+
+<h3 class="part">a)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|A| &= m^2-1 = (m-1)(m+1)\ne0 \Leftrightarrow m\ne\pm1;\\ A^{-1} &= \frac{1}{m^2-1}\begin{pmatrix}m & -1\\ -1 & m\end{pmatrix}.\end{aligned}$$
+</div>
+<aside class="note">Hệ quả $2\times2$: $A^{-1}=\frac{1}{ad-bc}\begin{pmatrix}d & -b\\ -c & a\end{pmatrix}$.</aside>
+</div>
+
+<h3 class="part">b)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|A|&=(1+m^3+1)-(m+m+m)\\&=m^3-3m+2=(m-1)^2(m+2).\end{aligned}$$
+<p>$A$ khả nghịch $\Leftrightarrow m\ne1$ và $m\ne-2$.</p>
+</div>
+<aside class="note">Sarrus: xuôi $1\cdot1\cdot1,\ m\cdot m\cdot m,\ 1\cdot1\cdot1$; ngược $1\cdot1\cdot m,\ 1\cdot m\cdot1,\ m\cdot1\cdot1$. Phân tích: $m=1$ là nghiệm của $m^3-3m+2$ ⇒ chia được $(m-1)(m^2+m-2)=(m-1)^2(m+2)$.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned}C &= \begin{pmatrix}1-m & m^2-1 & 1-m\\ 1-m & 1-m & m^2-1\\ m^2-1 & 1-m & 1-m\end{pmatrix},\\ \operatorname{adj}(A) &= C^\top = (m-1)\begin{pmatrix}-1 & -1 & m+1\\ m+1 & -1 & -1\\ -1 & m+1 & -1\end{pmatrix}.\end{aligned}$$
+$$A^{-1}=\frac{1}{(m-1)(m+2)}\begin{pmatrix}-1 & -1 & m+1\\ m+1 & -1 & -1\\ -1 & m+1 & -1\end{pmatrix}.$$
+</div>
+<aside class="note">Ví dụ $c_{12}=-\begin{vmatrix}1 & m\\ m & 1\end{vmatrix}=m^2-1$, $c_{21}=-\begin{vmatrix}m & 1\\ 1 & 1\end{vmatrix}=1-m$. Mọi phần tử của adj có nhân tử $(m-1)$ ⇒ giản ước với $(m-1)^2$ ở mẫu (hợp lệ vì $m\ne1$).</aside>
+</div>
+
+<h3 class="part">c)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|A|&=(2+m^2+0)-(0+2m+1)=m^2-2m+1\\&=(m-1)^2\ne0\iff m\ne1.\end{aligned}$$
+$$\begin{aligned}C &= \begin{pmatrix}2-2m & m^2-1 & 2-2m\\ -1 & 1 & m-2\\ m & -m & 1\end{pmatrix},\\ A^{-1} &= \frac{1}{(m-1)^2}\begin{pmatrix}2-2m & -1 & m\\ m^2-1 & 1 & -m\\ 2-2m & m-2 & 1\end{pmatrix}.\end{aligned}$$
+</div>
+<aside class="note">Ví dụ $c_{11}=\begin{vmatrix}2 & m\\ 2 & 1\end{vmatrix}=2-2m$; $c_{23}=-\begin{vmatrix}1 & 1\\ m & 2\end{vmatrix}=-(2-m)=m-2$. Ma trận nghịch đảo $=\frac{1}{|A|}C^\top$.</aside>
+</div>
+
+<h3 class="part">d)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}|A| &\overset{\substack{c_2:=c_2+3c_1\\ c_3:=c_3-2c_1}}{=} \begin{vmatrix}1 & 0 & 0\\ 3 & 2 & m-1\\ -m & -m & 2m+1\end{vmatrix}\\ &= 2(2m+1)+m(m-1) = m^2+3m+2 = (m+1)(m+2).\end{aligned}$$
+<p>$A$ khả nghịch $\Leftrightarrow m\ne-1$ và $m\ne-2$.</p>
+</div>
+<aside class="note">Dùng $a_{11}=1$ khử dòng 1 bằng phép cột (giữ nguyên định thức), rồi khai triển theo dòng 1 còn định thức cấp 2.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$C=\begin{pmatrix}-2m^2-10m-7 & -m^2-5m-3 & -m\\ 4m+3 & 2m+1 & m\\ -3m-1 & 1-m & 2\end{pmatrix}$$
+$$A^{-1}=\frac{1}{(m+1)(m+2)}\begin{pmatrix}-2m^2-10m-7 & 4m+3 & -3m-1\\ -m^2-5m-3 & 2m+1 & 1-m\\ -m & m & 2\end{pmatrix}.$$
+</div>
+<aside class="note">Ví dụ $c_{11}=\begin{vmatrix}-7 & m+5\\ 2m & 1\end{vmatrix}=-7-2m(m+5)$; $c_{31}=\begin{vmatrix}-3 & 2\\ -7 & m+5\end{vmatrix}=-3m-15+14=-3m-1$. Đã kiểm tra $A\cdot\operatorname{adj}(A)=|A|I_3$.</aside>
+</div>
+<div class="kq">a) $m\ne\pm1$; b) $m\ne1,\ m\ne-2$; c) $m\ne1$; d) $m\ne-1,\ m\ne-2$; nghịch đảo tương ứng như trên.</div>
+</section>
+
+<section class="problem" id="bt2-12">
+<h2><span class="num">2.12</span> Ma trận nguyên có nghịch đảo nguyên</h2>
+<div class="de">Cho $A\in M_n(\mathbb Z)$. Chứng tỏ rằng $\det A\in\mathbb Z$, đồng thời nếu $A$ khả nghịch thì $A^{-1}\in M_n(\mathbb Z)\Leftrightarrow|\det A|=1$.</div>
+<div class="nhan-dang">Ba công cụ: định nghĩa quy nạp của định thức (chỉ dùng phép cộng, trừ, nhân), $|AB|=|A||B|$, và công thức $A^{-1}=\frac1{|A|}\operatorname{adj}(A)$.</div>
+<div class="step">
+<div class="work">
+<p><b>(1) $\det A\in\mathbb Z$.</b> Quy nạp theo $n$. $n=1$: $|A|=a_{11}\in\mathbb Z$. Giả sử đúng cho cấp $n-1$. Với cấp $n$:</p>
+$$|A|=\sum_{k=1}^n a_{1k}(-1)^{1+k}|A(1|k)|,$$
+<p>mỗi $A(1|k)$ là ma trận nguyên cấp $n-1$ ⇒ $|A(1|k)|\in\mathbb Z$ ⇒ $|A|$ là tổng các tích số nguyên ⇒ $|A|\in\mathbb Z$.</p>
+</div>
+<aside class="note">Bản chất: định thức là một đa thức (cộng, trừ, nhân) của các phần tử; tập $\mathbb Z$ đóng với các phép này.</aside>
+</div>
+<div class="step">
+<div class="work">
+<p><b>(2) ($\Rightarrow$)</b> Giả sử $A^{-1}\in M_n(\mathbb Z)$. Theo (1): $\det A,\ \det A^{-1}\in\mathbb Z$ và</p>
+$$\det A\cdot\det A^{-1}=\det(AA^{-1})=\det I_n=1.$$
+<p>Hai số nguyên có tích bằng 1 ⇒ cả hai bằng $1$ hoặc cả hai bằng $-1$ ⇒ $|\det A|=1$.</p>
+</div>
+<aside class="note">Dùng $|AB|=|A||B|$. Các ước nguyên của 1 chỉ là $\pm1$.</aside>
+</div>
+<div class="step">
+<div class="work">
+<p><b>($\Leftarrow$)</b> Giả sử $\det A=\pm1$. Khi đó</p>
+$$A^{-1}=\frac{1}{\det A}\operatorname{adj}(A)=\pm\operatorname{adj}(A).$$
+<p>Phần tử của $\operatorname{adj}(A)$ là $c_{ji}=(-1)^{i+j}|A(j|i)|$, mà $A(j|i)$ là ma trận nguyên ⇒ $c_{ji}\in\mathbb Z$ theo (1). Vậy $A^{-1}\in M_n(\mathbb Z)$.</p>
+</div>
+<aside class="note">Chia cho $\pm1$ không tạo phân số — đó là lý do điều kiện $|\det A|=1$ là then chốt.</aside>
+</div>
+<div class="kq">∴ $\det A\in\mathbb Z$, và với $A$ khả nghịch: $A^{-1}\in M_n(\mathbb Z)\Leftrightarrow|\det A|=1$.</div>
+</section>
+
+<section class="problem" id="bt2-13">
+<h2><span class="num">2.13</span> Ma trận trực giao</h2>
+<div class="de">Ma trận $A\in M_n(K)$ được gọi là <i>trực giao</i> nếu $AA^\top=I_n$. Chứng minh rằng, nếu $A$ trực giao thì $\det A=\pm1$. Cho ví dụ về một ma trận trực giao có định thức bằng 1 và một ví dụ về ma trận trực giao có định thức bằng $-1$.</div>
+<div class="nhan-dang">Lấy định thức hai vế của $AA^\top=I_n$, rồi dùng $|AB|=|A||B|$ và $|A^\top|=|A|$.</div>
+<div class="step">
+<div class="work">
+$$AA^\top=I_n\Rightarrow |A|\,|A^\top|=|I_n|=1\Rightarrow |A|^2=1\Rightarrow \det A=\pm1.$$
+</div>
+<aside class="note">$|A^\top|=|A|$ (tính chất i trong bài giảng) biến tích thành bình phương.</aside>
+</div>
+<div class="step">
+<div class="work">
+<p>Ví dụ $\det=1$: $R=\begin{pmatrix}\cos\theta & -\sin\theta\\ \sin\theta & \cos\theta\end{pmatrix}$ (chẳng hạn $\theta=0$ cho $I_2$):</p>
+$$RR^\top=\begin{pmatrix}\cos^2\theta+\sin^2\theta & 0\\ 0 & \sin^2\theta+\cos^2\theta\end{pmatrix}=I_2,$$ $$|R|=\cos^2\theta+\sin^2\theta=1.$$
+<p>Ví dụ $\det=-1$: $S=\begin{pmatrix}1 & 0\\ 0 & -1\end{pmatrix}$: $SS^\top=S^2=I_2$, $|S|=-1$.</p>
+</div>
+<aside class="note">$R$ là phép quay, $S$ là phép đối xứng qua trục hoành — cả hai giữ nguyên độ dài nên trực giao; phép quay giữ hướng ($\det=1$), phép đối xứng đảo hướng ($\det=-1$).</aside>
+</div>
+<div class="kq">$\det A=\pm1$; ví dụ $R$ (định thức 1) và $S$ (định thức $-1$).</div>
+</section>
+
+<h2 class="group">Phần 3. Quy tắc Cramer (2.14 – 2.16)</h2>
+
+<section class="problem" id="bt2-14">
+<h2><span class="num">2.14</span> Giải hệ bằng quy tắc Cramer</h2>
+<div class="de">Giải các hệ phương trình sau bằng cách áp dụng quy tắc Cramer.
+$$\text{a)}\begin{cases}4x_1+3x_2=4\\ 2x_1+7x_2=10\end{cases}\quad \text{b)}\begin{cases}x_1+6x_2=8\\ -3x_1+9x_2=12\end{cases}\quad \text{c)}\begin{cases}x_1+x_2-2x_3=3\\ 2x_1+3x_2-7x_3=10\\ 5x_1+2x_2+x_3=1\end{cases}\quad \text{d)}\begin{cases}7x_1+2x_2+3x_3=1\\ 5x_1-3x_2+2x_3=5\\ 5x_1-8x_2+3x_3=11\end{cases}$$</div>
+<div class="nhan-dang">Hệ vuông ($n$ phương trình, $n$ ẩn). Quy tắc Cramer: tính $\Delta=|A|$; nếu $\Delta\ne0$ thì nghiệm duy nhất $x_i=\Delta_i/\Delta$, trong đó $\Delta_i$ là định thức của $A$ sau khi <b>thay cột $i$ bằng cột hệ số tự do</b>.</div>
+
+<h3 class="part">a)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta &= \begin{vmatrix}4 & 3\\ 2 & 7\end{vmatrix} = 22,\\ \Delta_1 &= \begin{vmatrix}4 & 3\\ 10 & 7\end{vmatrix} = -2,\\ \Delta_2 &= \begin{vmatrix}4 & 4\\ 2 & 10\end{vmatrix} = 32.\end{aligned}$$
+$$\Delta\ne0\Rightarrow x_1=\frac{-2}{22}=-\frac1{11},\quad x_2=\frac{32}{22}=\frac{16}{11}.$$
+</div>
+<aside class="note">$\Delta_1$: cột 1 $(4,2)^\top$ được thay bằng $(4,10)^\top$; $\Delta_2$: cột 2 được thay. Thử lại: $4(-\frac1{11})+3\cdot\frac{16}{11}=\frac{44}{11}=4$ ✓.</aside>
+</div>
+
+<h3 class="part">b)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta &= \begin{vmatrix}1 & 6\\ -3 & 9\end{vmatrix} = 27,\\ \Delta_1 &= \begin{vmatrix}8 & 6\\ 12 & 9\end{vmatrix} = 0,\\ \Delta_2 &= \begin{vmatrix}1 & 8\\ -3 & 12\end{vmatrix} = 36\ \Rightarrow \ x_1 = 0,\ x_2 = \frac{36}{27}\\ &= \frac43.\end{aligned}$$
+</div>
+<aside class="note">$\Delta_i=0$ không có gì bất thường khi $\Delta\ne0$: chỉ có nghĩa $x_i=0$.</aside>
+</div>
+
+<h3 class="part">c)</h3>
+<div class="step">
+<div class="work">
+$$\Delta=\begin{vmatrix}1 & 1 & -2\\ 2 & 3 & -7\\ 5 & 2 & 1\end{vmatrix}=(3-35-8)-(-30-14+2)=2,$$
+$$\begin{aligned}\Delta_1 &= \begin{vmatrix}3 & 1 & -2\\ 10 & 3 & -7\\ 1 & 2 & 1\end{vmatrix} = 0,\\ \Delta_2 &= \begin{vmatrix}1 & 3 & -2\\ 2 & 10 & -7\\ 5 & 1 & 1\end{vmatrix} = 2,\\ \Delta_3 &= \begin{vmatrix}1 & 1 & 3\\ 2 & 3 & 10\\ 5 & 2 & 1\end{vmatrix} = -2.\end{aligned}$$
+</div>
+<aside class="note">Mỗi định thức tính bằng Sarrus, ví dụ $\Delta_1=(9-7-40)-(-6-42+10)=-38+38=0$; $\Delta_2=(10-105-4)-(-100-7+6)=2$; $\Delta_3=(3+50+12)-(45+20+2)=-2$.</aside>
+</div>
+<div class="step">
+<div class="work">$$x_1=\frac{0}{2}=0,\quad x_2=\frac22=1,\quad x_3=\frac{-2}{2}=-1.$$</div>
+<aside class="note">Thử lại phương trình 3: $5\cdot0+2\cdot1+(-1)=1$ ✓.</aside>
+</div>
+
+<h3 class="part">d)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta &= \begin{vmatrix}7 & 2 & 3\\ 5 & -3 & 2\\ 5 & -8 & 3\end{vmatrix}\\ &= (-63+20-120)-(-45-112+30) = -36,\end{aligned}$$
+$$\begin{aligned}\Delta_1 &= \begin{vmatrix}1 & 2 & 3\\ 5 & -3 & 2\\ 11 & -8 & 3\end{vmatrix} = 0,\\ \Delta_2 &= \begin{vmatrix}7 & 1 & 3\\ 5 & 5 & 2\\ 5 & 11 & 3\end{vmatrix} = 36,\\ \Delta_3 &= \begin{vmatrix}7 & 2 & 1\\ 5 & -3 & 5\\ 5 & -8 & 11\end{vmatrix} = -36.\end{aligned}$$
+$$\Rightarrow x_1=0,\quad x_2=\frac{36}{-36}=-1,\quad x_3=\frac{-36}{-36}=1.$$
+</div>
+<aside class="note">$\Delta_1=(-9+44-120)-(-99-16+30)=0$; $\Delta_2=(105+10+165)-(75+154+15)=36$; $\Delta_3=(-231+50-40)-(-15-280+110)=-36$. Thử lại: $7\cdot0+2(-1)+3\cdot1=1$ ✓.</aside>
+</div>
+<div class="kq">a) $\left(-\frac1{11},\frac{16}{11}\right)$; b) $\left(0,\frac43\right)$; c) $(0,1,-1)$; d) $(0,-1,1)$.</div>
+</section>
+
+<section class="problem" id="bt2-15">
+<h2><span class="num">2.15</span> Giải và biện luận theo m (Cramer)</h2>
+<div class="de">Giải và biện luận (theo tham số $m$) các hệ phương trình sau:
+$$\text{a)}\begin{cases}(m-3)x+2y=m+3\\ -(2m+1)x+(m+2)y=6\end{cases}\qquad \text{b)}\begin{cases}mx_1+x_2+x_3=3\\ x_1+mx_2+x_3=3\\ x_1+2x_2+x_3=4\end{cases}$$
+$$\text{c)}\begin{cases}x_1+x_2-x_3=1\\ 2x_1+3x_2+mx_3=3\\ x_1+mx_2+3x_3=2\end{cases}\qquad \text{d)}\begin{cases}x_1+x_2+x_3=1\\ x_1-mx_2+3x_3=2\\ x_1+3x_2-mx_3=0\end{cases}$$
+$$\text{e)}\begin{cases}(2m+1)x_1-mx_2+(m+1)x_3=m-1\\ (m-2)x_1+(m-1)x_2+(m-2)x_3=m\\ (2m-1)x_1+(m-1)x_2+(2m-1)x_3=m\end{cases}\qquad \text{f)}\begin{cases}(m+1)x_1+x_2+2x_3=m\\ (m-2)x_1+(m-3)x_2+x_3=-m\\ (m+2)x_1+3x_2+(m-1)x_3=2m\end{cases}$$</div>
+<div class="nhan-dang"><b>Quy trình biện luận bằng Cramer</b> (đúng như ví dụ trong bài giảng):
+<ol style="margin:4px 0">
+<li>Tính $\Delta,\Delta_1,\dots,\Delta_n$, <b>phân tích thành nhân tử</b> (dùng phép biến đổi sơ cấp để làm xuất hiện nhân tử).</li>
+<li>$\Delta\ne0$: nghiệm duy nhất $x_i=\Delta_i/\Delta$ (giản ước nếu được).</li>
+<li>Với mỗi $m$ làm $\Delta=0$: nếu có $\Delta_i\ne0$ ⇒ vô nghiệm; nếu mọi $\Delta_i=0$ ⇒ <b>chưa kết luận được</b>, thay $m$ vào và giải bằng Gauss.</li>
+</ol></div>
+
+<h3 class="part">a)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta &= \begin{vmatrix}m-3 & 2\\ -(2m+1) & m+2\end{vmatrix} = (m-3)(m+2)+2(2m+1)\\ &= m^2+3m-4 = (m-1)(m+4),\end{aligned}$$
+$$\Delta_1=\begin{vmatrix}m+3 & 2\\ 6 & m+2\end{vmatrix}=m^2+5m-6=(m-1)(m+6),$$
+$$\begin{aligned}\Delta_2 &= \begin{vmatrix}m-3 & m+3\\ -(2m+1) & 6\end{vmatrix} = 6(m-3)+(2m+1)(m+3)\\ &= 2m^2+13m-15 = (m-1)(2m+15).\end{aligned}$$
+</div>
+<aside class="note">Cấp 2 tính trực tiếp. Mọi đa thức đều có nghiệm $m=1$ ⇒ có nhân tử $(m-1)$ — dấu hiệu hệ có thể vô số nghiệm tại $m=1$.</aside>
+</div>
+<div class="step">
+<div class="work">
+<ul>
+<li>$m\ne1,\ m\ne-4$: $\Delta\ne0$ ⇒ nghiệm duy nhất $x=\dfrac{m+6}{m+4},\ y=\dfrac{2m+15}{m+4}$.</li>
+<li>$m=-4$: $\Delta=0,\ \Delta_1=(-5)\cdot2=-10\ne0$ ⇒ vô nghiệm.</li>
+<li>$m=1$: $\Delta=\Delta_1=\Delta_2=0$. Hệ thành $\begin{cases}-2x+2y=4\\ -3x+3y=6\end{cases}\Leftrightarrow y=x+2$ ⇒ vô số nghiệm $(x,y)=(t,\,t+2),\ t\in\R$.</li>
+</ul>
+</div>
+<aside class="note">$x=\Delta_1/\Delta$: giản ước $(m-1)$ vì $m\ne1$. Tại $m=1$ cả hai phương trình đều tương đương $x-y=-2$ (Gauss: một dòng bị khử thành 0).</aside>
+</div>
+
+<h3 class="part">b)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta &\overset{\substack{c_1:=c_1-c_3\\ c_2:=c_2-c_3}}{=} \begin{vmatrix}m-1 & 0 & 1\\ 0 & m-1 & 1\\ 0 & 1 & 1\end{vmatrix}\\ &= (m-1)\big[(m-1)-1\big] = (m-1)(m-2).\end{aligned}$$
+</div>
+<aside class="note">Cột 3 toàn số 1 ⇒ trừ cột 3 khỏi cột 1, 2 cho nhiều số 0, rồi khai triển theo cột 1.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta_1 &= \begin{vmatrix}3 & 1 & 1\\ 3 & m & 1\\ 4 & 2 & 1\end{vmatrix} \overset{\substack{c_1:=c_1-3c_3\\ c_2:=c_2-c_3}}{=} \begin{vmatrix}0 & 0 & 1\\ 0 & m-1 & 1\\ 1 & 1 & 1\end{vmatrix}\\ &= 1\cdot\begin{vmatrix}0 & m-1\\ 1 & 1\end{vmatrix} = 1-m,\end{aligned}$$
+$$\begin{aligned}\Delta_2 &= \begin{vmatrix}m & 3 & 1\\ 1 & 3 & 1\\ 1 & 4 & 1\end{vmatrix} \overset{\substack{c_1:=c_1-c_3\\ c_2:=c_2-3c_3}}{=} \begin{vmatrix}m-1 & 0 & 1\\ 0 & 0 & 1\\ 0 & 1 & 1\end{vmatrix}\\ &= (m-1)\begin{vmatrix}0 & 1\\ 1 & 1\end{vmatrix} = 1-m,\end{aligned}$$
+$$\begin{aligned}\Delta_3 &= \begin{vmatrix}m & 1 & 3\\ 1 & m & 3\\ 1 & 2 & 4\end{vmatrix} \overset{d_1:=d_1-d_2}{=} \begin{vmatrix}m-1 & 1-m & 0\\ 1 & m & 3\\ 1 & 2 & 4\end{vmatrix}\\ &\overset{c_2:=c_2+c_1}{=} \begin{vmatrix}m-1 & 0 & 0\\ 1 & m+1 & 3\\ 1 & 3 & 4\end{vmatrix} = (m-1)(4m-5).\end{aligned}$$
+</div>
+<aside class="note">Cùng kỹ thuật: tạo số 0 bằng phép loại 3 trên cột/dòng, khai triển theo dòng 1. Ở $\Delta_3$: $(m-1)\big[4(m+1)-9\big]=(m-1)(4m-5)$.</aside>
+</div>
+<div class="step">
+<div class="work">
+<ul>
+<li>$m\ne1,\ m\ne2$: $x_1=x_2=\dfrac{1-m}{(m-1)(m-2)}=\dfrac{1}{2-m},\quad x_3=\dfrac{4m-5}{m-2}$.</li>
+<li>$m=2$: $\Delta=0,\ \Delta_1=-1\ne0$ ⇒ vô nghiệm.</li>
+<li>$m=1$: $\Delta=\Delta_1=\Delta_2=\Delta_3=0$. Giải bằng Gauss:</li>
+</ul>
+$$\begin{aligned}\left(\begin{array}{ccc|c}1 & 1 & 1 & 3\\ 1 & 1 & 1 & 3\\ 1 & 2 & 1 & 4\end{array}\right) &\xrightarrow{\substack{d_2:=d_2-d_1\\ d_3:=d_3-d_1}} \left(\begin{array}{ccc|c}1 & 1 & 1 & 3\\ 0 & 0 & 0 & 0\\ 0 & 1 & 0 & 1\end{array}\right)\\ &\Rightarrow \begin{cases}x_2=1\\ x_1=2-t\\ x_3=t\in\R\end{cases}\end{aligned}$$
+</div>
+<aside class="note">Khi $\Delta=\Delta_i=0$, Cramer chỉ nói "vô nghiệm hoặc vô số nghiệm" ⇒ bắt buộc giải lại. Ở đây $r(A)=r(\tilde A)=2\lt 3$ ⇒ vô số nghiệm, 1 ẩn tự do ($x_3$ ứng với cột không có phần tử cơ sở).</aside>
+</div>
+
+<h3 class="part">c)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta &\overset{\substack{d_2:=d_2-2d_1\\ d_3:=d_3-d_1}}{=} \begin{vmatrix}1 & 1 & -1\\ 0 & 1 & m+2\\ 0 & m-1 & 4\end{vmatrix}\\ &= 4-(m+2)(m-1) = -m^2-m+6 = -(m-2)(m+3),\end{aligned}$$
+$$\begin{aligned}\Delta_1 &= \begin{vmatrix}1 & 1 & -1\\ 3 & 3 & m\\ 2 & m & 3\end{vmatrix} \overset{c_1:=c_1-c_2}{=} \begin{vmatrix}0 & 1 & -1\\ 0 & 3 & m\\ 2-m & m & 3\end{vmatrix}\\ &= (2-m)\begin{vmatrix}1 & -1\\ 3 & m\end{vmatrix} = -(m-2)(m+3),\end{aligned}$$
+$$\begin{aligned}\Delta_2 &\overset{\substack{d_2:=d_2-2d_1\\ d_3:=d_3-d_1}}{=} \begin{vmatrix}1 & 1 & -1\\ 0 & 1 & m+2\\ 0 & 1 & 4\end{vmatrix}\\ &= 2-m,\\ \Delta_3 &\overset{c_3:=c_3-c_2}{=} \begin{vmatrix}1 & 1 & 0\\ 2 & 3 & 0\\ 1 & m & 2-m\end{vmatrix} = (2-m)\cdot1 = 2-m.\end{aligned}$$
+</div>
+<aside class="note">$\Delta_2=\begin{vmatrix}1 & 1 & -1\\ 2 & 3 & m\\ 1 & 2 & 3\end{vmatrix}$, $\Delta_3=\begin{vmatrix}1 & 1 & 1\\ 2 & 3 & 3\\ 1 & m & 2\end{vmatrix}$. Ở $\Delta_1$: cột 1 và cột 2 trùng nhau ở hai dòng đầu ⇒ trừ nhau ra hai số 0; khai triển theo cột 1 (dấu $(-1)^{3+1}=+$).</aside>
+</div>
+<div class="step">
+<div class="work">
+<ul>
+<li>$m\ne2,\ m\ne-3$: $x_1=1,\ x_2=x_3=\dfrac{2-m}{-(m-2)(m+3)}=\dfrac{1}{m+3}$.</li>
+<li>$m=-3$: $\Delta=0,\ \Delta_2=5\ne0$ ⇒ vô nghiệm.</li>
+<li>$m=2$: mọi $\Delta,\Delta_i=0$ ⇒ Gauss:</li>
+</ul>
+$$\begin{aligned}\left(\begin{array}{ccc|c}1 & 1 & -1 & 1\\ 2 & 3 & 2 & 3\\ 1 & 2 & 3 & 2\end{array}\right) &\xrightarrow{\substack{d_2:=d_2-2d_1\\ d_3:=d_3-d_1}} \left(\begin{array}{ccc|c}1 & 1 & -1 & 1\\ 0 & 1 & 4 & 1\\ 0 & 1 & 4 & 1\end{array}\right)\\ &\xrightarrow{d_3:=d_3-d_2} \left(\begin{array}{ccc|c}1 & 1 & -1 & 1\\ 0 & 1 & 4 & 1\\ 0 & 0 & 0 & 0\end{array}\right)\end{aligned}$$
+$$\Rightarrow x_3=t,\ x_2=1-4t,\ x_1=1-x_2+x_3=5t\quad(t\in\R).$$
+</div>
+<aside class="note">Hệ này trùng với Bài 1.36a ở Chương 1 (giải bằng Gauss) — hai cách cho cùng kết quả.</aside>
+</div>
+
+<h3 class="part">d)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta &\overset{\substack{d_2:=d_2-d_1\\ d_3:=d_3-d_1}}{=} \begin{vmatrix}1 & 1 & 1\\ 0 & -m-1 & 2\\ 0 & 2 & -m-1\end{vmatrix}\\ &= (m+1)^2-4 = (m-1)(m+3),\end{aligned}$$
+$$\begin{aligned}\Delta_1 &= \begin{vmatrix}1 & 1 & 1\\ 2 & -m & 3\\ 0 & 3 & -m\end{vmatrix} \overset{d_2:=d_2-2d_1}{=} \begin{vmatrix}1 & 1 & 1\\ 0 & -m-2 & 1\\ 0 & 3 & -m\end{vmatrix}\\ &= m(m+2)-3 = (m-1)(m+3),\end{aligned}$$
+$$\begin{aligned}\Delta_2 &= \begin{vmatrix}1 & 1 & 1\\ 1 & 2 & 3\\ 1 & 0 & -m\end{vmatrix} = 1-m,\\ \Delta_3 &= \begin{vmatrix}1 & 1 & 1\\ 1 & -m & 2\\ 1 & 3 & 0\end{vmatrix} = m-1.\end{aligned}$$
+</div>
+<aside class="note">Cột 1 toàn 1 (ở $\Delta,\Delta_2,\Delta_3$) ⇒ trừ dòng 1 khỏi các dòng dưới rồi khai triển theo cột 1. Ví dụ $\Delta_2$: $\begin{vmatrix}1 & 2\\ -1 & -m-1\end{vmatrix}=-(m+1)+2=1-m$.</aside>
+</div>
+<div class="step">
+<div class="work">
+<ul>
+<li>$m\ne1,\ m\ne-3$: $x_1=1,\ x_2=\dfrac{1-m}{(m-1)(m+3)}=-\dfrac1{m+3},\ x_3=\dfrac{1}{m+3}$.</li>
+<li>$m=-3$: $\Delta=0,\ \Delta_2=4\ne0$ ⇒ vô nghiệm.</li>
+<li>$m=1$: mọi $\Delta,\Delta_i=0$ ⇒ Gauss:</li>
+</ul>
+$$\begin{aligned}\left(\begin{array}{ccc|c}1 & 1 & 1 & 1\\ 1 & -1 & 3 & 2\\ 1 & 3 & -1 & 0\end{array}\right) &\xrightarrow{\substack{d_2:=d_2-d_1\\ d_3:=d_3-d_1}} \left(\begin{array}{ccc|c}1 & 1 & 1 & 1\\ 0 & -2 & 2 & 1\\ 0 & 2 & -2 & -1\end{array}\right)\\ &\xrightarrow{d_3:=d_3+d_2} \left(\begin{array}{ccc|c}1 & 1 & 1 & 1\\ 0 & -2 & 2 & 1\\ 0 & 0 & 0 & 0\end{array}\right)\end{aligned}$$
+$$\Rightarrow x_3=t,\ x_2=t-\tfrac12,\ x_1=1-x_2-x_3=\tfrac32-2t\quad(t\in\R).$$
+</div>
+<aside class="note">Từ dòng 2: $-2x_2+2x_3=1\Rightarrow x_2=x_3-\frac12$. Thế ngược lên dòng 1.</aside>
+</div>
+
+<h3 class="part">e)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta &\overset{c_1:=c_1-c_3}{=} \begin{vmatrix}m & -m & m+1\\ 0 & m-1 & m-2\\ 0 & m-1 & 2m-1\end{vmatrix}\\ &= m\big[(m-1)(2m-1)-(m-1)(m-2)\big] = m(m-1)(m+1).\end{aligned}$$
+</div>
+<aside class="note">Cột 1 và cột 3 gần giống nhau (khác nhau đúng ở dòng 1) ⇒ $c_1-c_3$ cho cột $(m,0,0)^\top$. Rút $(m-1)$ trong ngoặc: $(m-1)\big[(2m-1)-(m-2)\big]=(m-1)(m+1)$.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta_1 &= \begin{vmatrix}m-1 & -m & m+1\\ m & m-1 & m-2\\ m & m-1 & 2m-1\end{vmatrix} \overset{d_3:=d_3-d_2}{=} \begin{vmatrix}m-1 & -m & m+1\\ m & m-1 & m-2\\ 0 & 0 & m+1\end{vmatrix}\\ &= (m+1)\big[(m-1)^2+m^2\big] = (m+1)(2m^2-2m+1),\end{aligned}$$
+$$\begin{aligned}\Delta_2 &= \begin{vmatrix}2m+1 & m-1 & m+1\\ m-2 & m & m-2\\ 2m-1 & m & 2m-1\end{vmatrix} \overset{c_1:=c_1-c_3}{=} \begin{vmatrix}m & m-1 & m+1\\ 0 & m & m-2\\ 0 & m & 2m-1\end{vmatrix}\\ &= m\cdot m\big[(2m-1)-(m-2)\big] = m^2(m+1),\end{aligned}$$
+$$\begin{aligned}\Delta_3 &= \begin{vmatrix}2m+1 & -m & m-1\\ m-2 & m-1 & m\\ 2m-1 & m-1 & m\end{vmatrix} \overset{d_2:=d_2-d_3}{=} \begin{vmatrix}2m+1 & -m & m-1\\ -m-1 & 0 & 0\\ 2m-1 & m-1 & m\end{vmatrix}\\ &= -(m+1)\cdot(-1)^{2+1}\begin{vmatrix}-m & m-1\\ m-1 & m\end{vmatrix}\\ &= -(m+1)(2m^2-2m+1).\end{aligned}$$
+</div>
+<aside class="note">Mỗi định thức: tìm hai dòng/cột gần giống nhau để trừ ra một dòng/cột chỉ có một phần tử khác 0, rồi khai triển. Ở $\Delta_3$: $\begin{vmatrix}-m & m-1\\ m-1 & m\end{vmatrix}=-m^2-(m-1)^2=-(2m^2-2m+1)$.</aside>
+</div>
+<div class="step">
+<div class="work">
+<ul>
+<li>$m\notin\{0,1,-1\}$: $x_1=\dfrac{2m^2-2m+1}{m(m-1)},\ x_2=\dfrac{m^2(m+1)}{m(m-1)(m+1)}=\dfrac{m}{m-1},\ x_3=-\dfrac{2m^2-2m+1}{m(m-1)}$.</li>
+<li>$m=0$: $\Delta=0,\ \Delta_1=1\ne0$ ⇒ vô nghiệm.</li>
+<li>$m=1$: $\Delta=0,\ \Delta_1=2\cdot1=2\ne0$ ⇒ vô nghiệm.</li>
+<li>$m=-1$: $\Delta=\Delta_1=\Delta_2=\Delta_3=0$ ⇒ Gauss:</li>
+</ul>
+$$\left(\begin{array}{ccc|c}-1 & 1 & 0 & -2\\ -3 & -2 & -3 & -1\\ -3 & -2 & -3 & -1\end{array}\right)\xrightarrow{\substack{d_3:=d_3-d_2\\ d_2:=d_2-3d_1}}\left(\begin{array}{ccc|c}-1 & 1 & 0 & -2\\ 0 & -5 & -3 & 5\\ 0 & 0 & 0 & 0\end{array}\right)$$
+$$\Rightarrow x_3=5s,\ x_2=-1-3s,\ x_1=x_2+2=1-3s\quad(s\in\R).$$
+</div>
+<aside class="note">Tại $m=-1$ mọi định thức có nhân tử $(m+1)$ nên đều bằng 0. Chọn $x_3=5s$ để tránh phân số: từ $-5x_2-3x_3=5$ ⇒ $x_2=-1-3s$.</aside>
+</div>
+
+<h3 class="part">f)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta &\overset{c_1:=c_1-c_2-c_3}{=} \begin{vmatrix}m-2 & 1 & 2\\ 0 & m-3 & 1\\ 0 & 3 & m-1\end{vmatrix}\\ &= (m-2)\big[(m-3)(m-1)-3\big] = (m-2)(m^2-4m)\\ &= m(m-2)(m-4).\end{aligned}$$
+</div>
+<aside class="note">Quan sát: (cột 1) − (cột 2) − (cột 3) $=(m-2,0,0)^\top$ (hai phép loại 3 liên tiếp). Khai triển theo cột 1.</aside>
+</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta_1 &= \begin{vmatrix}m & 1 & 2\\ -m & m-3 & 1\\ 2m & 3 & m-1\end{vmatrix} = m\begin{vmatrix}1 & 1 & 2\\ -1 & m-3 & 1\\ 2 & 3 & m-1\end{vmatrix}\\ &\overset{\substack{d_2:=d_2+d_1\\ d_3:=d_3-2d_1}}{=} m\begin{vmatrix}1 & 1 & 2\\ 0 & m-2 & 3\\ 0 & 1 & m-5\end{vmatrix}\\ &= m(m^2-7m+7),\end{aligned}$$
+$$\begin{aligned}\Delta_2 &= \begin{vmatrix}m+1 & m & 2\\ m-2 & -m & 1\\ m+2 & 2m & m-1\end{vmatrix} = m\begin{vmatrix}m+1 & 1 & 2\\ m-2 & -1 & 1\\ m+2 & 2 & m-1\end{vmatrix}\\ &\overset{\substack{d_2:=d_2+d_1\\ d_3:=d_3-2d_1}}{=} m\begin{vmatrix}m+1 & 1 & 2\\ 2m-1 & 0 & 3\\ -m & 0 & m-5\end{vmatrix}\\ &= -m(2m^2-8m+5),\end{aligned}$$
+$$\begin{aligned}\Delta_3 &= \begin{vmatrix}m+1 & 1 & m\\ m-2 & m-3 & -m\\ m+2 & 3 & 2m\end{vmatrix} \overset{c_3:=c_3+c_2-c_1}{=} \begin{vmatrix}m+1 & 1 & 0\\ m-2 & m-3 & -m-1\\ m+2 & 3 & m+1\end{vmatrix}\\ &\overset{d_2:=d_2+d_3}{=} \begin{vmatrix}m+1 & 1 & 0\\ 2m & m & 0\\ m+2 & 3 & m+1\end{vmatrix} = (m+1)(m^2-m).\end{aligned}$$
+</div>
+<aside class="note">$\Delta_1,\Delta_2$: cột chứa hệ số tự do $(m,-m,2m)^\top$ có thừa số chung $m$ ⇒ rút ra. $\Delta_2$ khai triển theo cột 2 (chỉ còn $a_{12}=1$, dấu $(-1)^{1+2}$): $-\big[(2m-1)(m-5)+3m\big]$. $$\Delta_3=(m+1)\big[m(m+1)-2m\big]$$ $$=m(m-1)(m+1).$$</aside>
+</div>
+<div class="step">
+<div class="work">
+<ul>
+<li>$m\notin\{0,2,4\}$: $x_1=\dfrac{m^2-7m+7}{(m-2)(m-4)},\ x_2=-\dfrac{2m^2-8m+5}{(m-2)(m-4)},\ x_3=\dfrac{m^2-1}{(m-2)(m-4)}$.</li>
+<li>$m=2$: $\Delta=0,\ \Delta_1=2(4-14+7)=-6\ne0$ ⇒ vô nghiệm.</li>
+<li>$m=4$: $\Delta=0,\ \Delta_1=4(16-28+7)=-20\ne0$ ⇒ vô nghiệm.</li>
+<li>$m=0$: $\Delta=\Delta_1=\Delta_2=\Delta_3=0$ ⇒ Gauss (hệ thuần nhất):</li>
+</ul>
+$$\begin{aligned}\left(\begin{array}{ccc|c}1 & 1 & 2 & 0\\ -2 & -3 & 1 & 0\\ 2 & 3 & -1 & 0\end{array}\right) &\xrightarrow{\substack{d_3:=d_3+d_2\\ d_2:=d_2+2d_1}} \left(\begin{array}{ccc|c}1 & 1 & 2 & 0\\ 0 & -1 & 5 & 0\\ 0 & 0 & 0 & 0\end{array}\right)\\ &\Rightarrow x_3 = t,\ x_2 = 5t,\ x_1 = -7t\\ &(t\in\R).\end{aligned}$$
+</div>
+<aside class="note">Tại $m=0$ mọi $\Delta_i$ có nhân tử $m$ nên bằng 0; hệ trở thành thuần nhất (vế phải $0,0,0$) nên luôn có nghiệm tầm thường, và ở đây có vô số nghiệm vì $r(A)=2\lt 3$.</aside>
+</div>
+<div class="kq">
+<table class="t">
+<tr><th>Câu</th><th>Nghiệm duy nhất khi</th><th>Vô nghiệm khi</th><th>Vô số nghiệm khi</th></tr>
+<tr><td>a</td><td>$m\ne1,-4$: $\left(\frac{m+6}{m+4},\frac{2m+15}{m+4}\right)$</td><td>$m=-4$</td><td>$m=1$: $(t,t+2)$</td></tr>
+<tr><td>b</td><td>$m\ne1,2$: $\left(\frac1{2-m},\frac1{2-m},\frac{4m-5}{m-2}\right)$</td><td>$m=2$</td><td>$m=1$: $(2-t,1,t)$</td></tr>
+<tr><td>c</td><td>$m\ne2,-3$: $\left(1,\frac1{m+3},\frac1{m+3}\right)$</td><td>$m=-3$</td><td>$m=2$: $(5t,1-4t,t)$</td></tr>
+<tr><td>d</td><td>$m\ne1,-3$: $\left(1,-\frac1{m+3},\frac1{m+3}\right)$</td><td>$m=-3$</td><td>$m=1$: $\left(\frac32-2t,t-\frac12,t\right)$</td></tr>
+<tr><td>e</td><td>$m\ne0,\pm1$ (như trên)</td><td>$m=0$, $m=1$</td><td>$m=-1$: $(1-3s,-1-3s,5s)$</td></tr>
+<tr><td>f</td><td>$m\ne0,2,4$ (như trên)</td><td>$m=2$, $m=4$</td><td>$m=0$: $(-7t,5t,t)$</td></tr>
+</table>
+</div>
+</section>
+
+<section class="problem" id="bt2-16">
+<h2><span class="num">2.16</span> Hệ phụ thuộc hai tham số a, b</h2>
+<div class="de">Cho hệ phương trình phụ thuộc vào các tham số $a,b$:
+$$\begin{cases}x_1+2x_2+ax_3=3\\ 3x_1-x_2-ax_3=2\\ 2x_1+x_2+3x_3=b\end{cases}$$
+a) Xác định $a$ để hệ có nghiệm duy nhất. b) Xác định $a,b$ để hệ có vô số nghiệm và tìm nghiệm tương ứng.</div>
+<div class="nhan-dang">Hệ vuông ⇒ Cramer. Nghiệm duy nhất $\Leftrightarrow\Delta\ne0$ ($\Delta$ chỉ phụ thuộc $a$ vì $b$ nằm ở vế phải). Khi $\Delta=0$, điều kiện cần để vô số nghiệm là mọi $\Delta_i=0$ (nếu có $\Delta_i\ne0$ thì vô nghiệm); sau đó kiểm tra lại bằng Gauss.</div>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta &= \begin{vmatrix}1 & 2 & a\\ 3 & -1 & -a\\ 2 & 1 & 3\end{vmatrix} = (-3-4a+3a)-(-2a-a+18)\\ &= 2a-21.\end{aligned}$$
+</div>
+<aside class="note">Sarrus: xuôi $1(-1)3,\ 2(-a)2,\ a\cdot3\cdot1$; ngược $a(-1)2,\ 1(-a)1,\ 2\cdot3\cdot3$.</aside>
+</div>
+<h3 class="part">a)</h3>
+<div class="step">
+<div class="work">Hệ có nghiệm duy nhất $\Leftrightarrow\Delta\ne0\Leftrightarrow a\ne\dfrac{21}{2}$ (với mọi $b$).</div>
+<aside class="note">Nếu $\Delta=0$ thì theo Cramer hệ chỉ có thể vô nghiệm hoặc vô số nghiệm — không bao giờ có nghiệm duy nhất.</aside>
+</div>
+<h3 class="part">b)</h3>
+<div class="step">
+<div class="work">
+$$\begin{aligned}\Delta_1 &= \begin{vmatrix}3 & 2 & a\\ 2 & -1 & -a\\ b & 1 & 3\end{vmatrix} = -ab+5a-21,\\ \Delta_2 &= \begin{vmatrix}1 & 3 & a\\ 3 & 2 & -a\\ 2 & b & 3\end{vmatrix} = 4ab-10a-21,\\ \Delta_3 &= \begin{vmatrix}1 & 2 & 3\\ 3 & -1 & 2\\ 2 & 1 & b\end{vmatrix} = 21-7b.\end{aligned}$$
+<p>Với $a=\frac{21}2$: $\Delta_1=\frac{21}{2}(3-b),\ \Delta_2=42(b-3),\ \Delta_3=-7(b-3)$.</p>
+</div>
+<aside class="note">Vô số nghiệm cần $\Delta=0$ ($a=\frac{21}2$) và mọi $\Delta_i=0$ ⇒ $b=3$. Nếu $a=\frac{21}2,\ b\ne3$ thì $\Delta_3\ne0$ ⇒ vô nghiệm.</aside>
+</div>
+<div class="step">
+<div class="work">
+<p>Với $a=\frac{21}2,\ b=3$, giải bằng Gauss:</p>
+$$\begin{aligned}\left(\begin{array}{ccc|c}1 & 2 & \frac{21}{2} & 3\\ 3 & -1 & -\frac{21}{2} & 2\\ 2 & 1 & 3 & 3\end{array}\right) &\xrightarrow{\substack{d_2:=d_2-3d_1\\ d_3:=d_3-2d_1}} \left(\begin{array}{ccc|c}1 & 2 & \frac{21}{2} & 3\\ 0 & -7 & -42 & -7\\ 0 & -3 & -18 & -3\end{array}\right)\\ &\xrightarrow{\substack{d_2:=-\frac17d_2\\ d_3:=d_3+3d_2}} \left(\begin{array}{ccc|c}1 & 2 & \frac{21}{2} & 3\\ 0 & 1 & 6 & 1\\ 0 & 0 & 0 & 0\end{array}\right)\end{aligned}$$
+$$\Rightarrow x_3=t,\quad x_2=1-6t,\quad x_1=3-2x_2-\tfrac{21}{2}t=1+\tfrac32t\quad(t\in\R).$$
+</div>
+<aside class="note">$\Delta=\Delta_i=0$ chưa đủ để kết luận ⇒ phải giải lại. Dạng bậc thang có $r(A)=r(\tilde A)=2\lt3$ ⇒ vô số nghiệm, 1 ẩn tự do.</aside>
+</div>
+<div class="kq">a) $a\ne\frac{21}{2}$. b) $a=\frac{21}{2},\ b=3$; nghiệm $(x_1,x_2,x_3)=\left(1+\frac32t,\ 1-6t,\ t\right),\ t\in\R$. (Khi $a=\frac{21}2,\ b\ne3$: vô nghiệm.)</div>
+</section>
+
+<h2 class="group">Phần 4. Bài tập thực hành Maple</h2>
+
+<div class="intro">
+<p style="margin-top:0"><b>Yêu cầu chung:</b> không dùng gói <code>linalg</code>, <code>LinearAlgebra</code>; ma trận là danh sách các dòng, ví dụ <code>A:=[[1,2],[3,4]]</code>, nên <code>A[i][j]</code> là phần tử dòng $i$ cột $j$ và <code>nops(A)</code> là số dòng.</p>
+<p style="margin-bottom:0"><b>Lưu ý trung thực:</b> mã Maple dưới đây <b>chưa được chạy trong Maple</b> (môi trường soạn lời giải không có Maple). Logic của từng hàm đã được kiểm tra bằng một bản chuyển tương đương sang Python trên đúng các ví dụ của đề, và cho đúng kết quả mong đợi: $-40$; $[[14,1,-11],[-4,-2,4],[-4,1,1]]$; $[[-2,3,0],[-8,13,-1],[17,-27,2]]$ và <code>false</code>; $[2/3,-1/3,2/3]$, <code>"Vo Nghiem"</code>, <code>false</code>. Nếu Maple báo lỗi cú pháp nhỏ (khác phiên bản), hãy giữ nguyên thuật toán và sửa cú pháp.</p>
+</div>
+
+<section class="problem" id="th2-1">
+<h2><span class="num">TH 1</span> Định thức: DinhThucDN và DinhThucTG</h2>
+<div class="de">Tính định thức ma trận (bằng định nghĩa và bằng cách đưa về ma trận tam giác). Tên hàm: DinhThucDN, DinhThucTG. Input: ma trận $A$. Output: định thức nếu $A$ vuông, <code>false</code> nếu không vuông. Ví dụ: <code>A := [[1,4,1,3],[2,4,3,2],[3,5,3,4],[3,7,1,2]]</code> cho $-40$.</div>
+<div class="nhan-dang">DinhThucDN cài đặt trực tiếp <b>định nghĩa quy nạp</b> (khai triển theo dòng 1) ⇒ hàm đệ quy. DinhThucTG cài đặt <b>Định lý về định thức và phép BĐSCTD</b>: khử Gauss về tam giác trên, mỗi lần đổi dòng thì đổi dấu, phép loại 3 không đổi định thức, cuối cùng nhân các phần tử đường chéo.</div>
+<div class="step">
+<div class="work">
+<pre class="code">
+# Ma trận A(i|j): bỏ dòng i, cột j  (subsop(k=NULL, L) xoá phần tử thứ k của L)
+XoaDongCot := proc(A, i, j)
+  map(r -&gt; subsop(j = NULL, r), subsop(i = NULL, A));
+end proc:
+
+LaVuong := proc(A)
+  local k, n;
+  n := nops(A);
+  for k from 1 to n do
+    if nops(A[k]) &lt;&gt; n then return false; end if;
+  end do;
+  true;
+end proc:
+
+DinhThucDN := proc(A)
+  local n, j, s;
+  if not LaVuong(A) then return false; end if;
+  n := nops(A);
+  if n = 1 then return A[1][1]; end if;
+  s := 0;
+  for j from 1 to n do      # |A| = sum a_1j (-1)^(1+j) |A(1|j)|
+    s := s + A[1][j]*(-1)^(1+j)*DinhThucDN(XoaDongCot(A, 1, j));
+  end do;
+  s;
+end proc:
+</pre>
+</div>
+<aside class="note"><p>Đúng như định nghĩa trong bài giảng: $n=1$ thì $|A|=a$; $n\ge2$ thì $|A|=\sum_j a_{1j}(-1)^{1+j}|A(1|j)|$, mà $|A(1|j)|$ lại tính bằng chính hàm này (đệ quy).</p><p>Nhược điểm: số phép tính cỡ $n!$ ⇒ chỉ dùng cho $n$ nhỏ.</p></aside>
+</div>
+<div class="step">
+<div class="work">
+<pre class="code">
+DinhThucTG := proc(A0)
+  local A, n, i, j, k, p, t, d;
+  if not LaVuong(A0) then return false; end if;
+  n := nops(A0);
+  A := Array(1..n, 1..n, (i, j) -&gt; A0[i][j]);   # chép sang mảng 2 chiều để sửa được
+  d := 1;
+  for j from 1 to n do
+    p := 0;                                     # tìm dòng p &gt;= j có A[p,j] &lt;&gt; 0
+    for i from j to n do
+      if A[i, j] &lt;&gt; 0 then p := i; break; end if;
+    end do;
+    if p = 0 then return 0; end if;             # cột j không có phần tử cơ sở =&gt; |A| = 0
+    if p &lt;&gt; j then                              # d_j &lt;-&gt; d_p : định thức đổi dấu
+      for k from 1 to n do
+        t := A[j, k]; A[j, k] := A[p, k]; A[p, k] := t;
+      end do;
+      d := -d;
+    end if;
+    for i from j+1 to n do                      # d_i := d_i - (a_ij/a_jj) d_j : không đổi định thức
+      t := A[i, j]/A[j, j];
+      for k from j to n do A[i, k] := A[i, k] - t*A[j, k]; end do;
+    end do;
+    d := d*A[j, j];                             # tích các phần tử đường chéo
+  end do;
+  d;
+end proc:
+
+# Thử:
+A := [[1,4,1,3],[2,4,3,2],[3,5,3,4],[3,7,1,2]]:
+DinhThucDN(A);   # -40
+DinhThucTG(A);   # -40
+</pre>
+</div>
+<aside class="note"><p>Chính là thuật toán Gauss (bước 3, 4 trong bài giảng) kèm theo dõi định thức: hoán vị dòng ⇒ $|A'|=-|A|$; $d_i:=d_i+\beta d_j$ ⇒ $|A'|=|A|$. Kết thúc ta có ma trận tam giác trên nên $|A|=\pm a_{11}a_{22}\cdots a_{nn}$.</p><p>Nếu một cột không tìm được phần tử khác 0 từ dòng $j$ trở xuống thì ma trận tam giác thu được có 0 trên đường chéo ⇒ $|A|=0$.</p></aside>
+</div>
+<div class="kq">Cả hai hàm trả về $-40$ cho ví dụ của đề (đã kiểm tra bằng bản Python tương đương).</div>
+</section>
+
+<section class="problem" id="th2-2">
+<h2><span class="num">TH 2</span> Ma trận phụ hợp: PhuHop</h2>
+<div class="de">Tìm ma trận phụ hợp của ma trận. Tên hàm: PhuHop. Input: ma trận $A$. Output: ma trận phụ hợp nếu $A$ vuông, <code>false</code> nếu không. Ví dụ <code>A:=[[1,2,3],[2,5,2],[2,3,4]]</code> cho <code>[[14,1,-11],[-4,-2,4],[-4,1,1]]</code>.</div>
+<div class="nhan-dang">$\operatorname{adj}(A)=C^\top$ với $c_{ij}=(-1)^{i+j}|A(i|j)|$ ⇒ phần tử ở dòng $i$, cột $j$ của $\operatorname{adj}(A)$ là $c_{ji}=(-1)^{i+j}|A(j|i)|$ (chú ý đảo chỉ số do chuyển vị).</div>
+<div class="step">
+<div class="work">
+<pre class="code">
+PhuHop := proc(A)
+  local n, i, j;
+  if not LaVuong(A) then return false; end if;
+  n := nops(A);
+  if n = 1 then return [[1]]; end if;
+  # phần tử (i,j) của adj(A) = c_ji = (-1)^(i+j) * |A(j|i)|
+  [seq([seq((-1)^(i+j)*DinhThucDN(XoaDongCot(A, j, i)), j = 1..n)], i = 1..n)];
+end proc:
+
+PhuHop([[1,2,3],[2,5,2],[2,3,4]]);   # [[14, 1, -11], [-4, -2, 4], [-4, 1, 1]]
+</pre>
+</div>
+<aside class="note">Đổi chỗ $i,j$ trong <code>XoaDongCot(A, j, i)</code> chính là bước "chuyển vị" $C\to C^\top$. Quy ước $n=1$: $\operatorname{adj}((a))=(1)$ (để $A\cdot\operatorname{adj}(A)=|A|I_1$ vẫn đúng).</aside>
+</div>
+<div class="kq">Cho đúng <code>[[14,1,-11],[-4,-2,4],[-4,1,1]]</code> trên ví dụ của đề.</div>
+</section>
+
+<section class="problem" id="th2-3">
+<h2><span class="num">TH 3</span> Nghịch đảo bằng phương pháp định thức: NghichDao</h2>
+<div class="de">Tìm ma trận nghịch đảo của ma trận bằng phương pháp định thức. Tên hàm: NgichDao (trong ví dụ của đề gọi là NghichDao). Output: ma trận nghịch đảo nếu $A$ khả nghịch, <code>false</code> nếu không. Ví dụ <code>A:=[[1,6,3],[1,4,2],[5,3,2]]</code> cho <code>[[-2,3,0],[-8,13,-1],[17,-27,2]]</code>; <code>B:=[[2,3,1],[1,2,0],[3,1,5]]</code> cho <code>false</code>.</div>
+<div class="nhan-dang">Định lý: $A$ khả nghịch $\Leftrightarrow|A|\ne0$, và $A^{-1}=\frac1{|A|}\operatorname{adj}(A)$. Dùng lại DinhThucTG và PhuHop.</div>
+<div class="step">
+<div class="work">
+<pre class="code">
+NghichDao := proc(A)
+  local d, P, n, i, j;
+  d := DinhThucTG(A);
+  if d = false then return false; end if;   # không vuông
+  if d = 0 then return false; end if;       # |A| = 0 =&gt; không khả nghịch
+  P := PhuHop(A);
+  n := nops(A);
+  [seq([seq(P[i][j]/d, j = 1..n)], i = 1..n)];
+end proc:
+NgichDao := NghichDao:     # tên theo đề bài
+
+NghichDao([[1,6,3],[1,4,2],[5,3,2]]);   # [[-2, 3, 0], [-8, 13, -1], [17, -27, 2]]
+NghichDao([[2,3,1],[1,2,0],[3,1,5]]);   # false
+</pre>
+</div>
+<aside class="note">Ví dụ 1: $|A|=1$ nên $A^{-1}=\operatorname{adj}(A)$ (ma trận nguyên — đúng như Bài 2.12). Ví dụ 2: $|B|=2\cdot10-3\cdot5+1\cdot(1-6)=0$ ⇒ <code>false</code>.</aside>
+</div>
+<div class="kq">Cho đúng hai kết quả của đề.</div>
+</section>
+
+<section class="problem" id="th2-4">
+<h2><span class="num">TH 4</span> Quy tắc Cramer: Cramer</h2>
+<div class="de">Giải hệ phương trình tuyến tính bằng quy tắc Cramer. Tên hàm: Cramer. Input: ma trận hệ số $A$, dòng hệ số tự do $b$. Output: nghiệm (trường hợp nghiệm duy nhất), in ra <code>Vo Nghiem</code> cho trường hợp vô nghiệm và <code>false</code> cho các trường hợp còn lại. Ví dụ: <code>A:=[[1,2,3],[4,3,2],[3,5,1]], b:=[2,3,1]</code> cho <code>[2/3,-1/3,2/3]</code>; <code>A:=[[2,3,1],[1,2,0],[1,1,1]]</code> với <code>b:=[1,2,3]</code> cho <code>"Vo Nghiem"</code>, với <code>b:=[5,2,3]</code> cho <code>false</code>.</div>
+<div class="nhan-dang">Cài đặt đúng ba trường hợp của định lý Cramer: (i) $\Delta\ne0$ ⇒ $x_i=\Delta_i/\Delta$; (ii) $\Delta=0$ và có $\Delta_i\ne0$ ⇒ vô nghiệm; (iii) $\Delta=0$, mọi $\Delta_i=0$ ⇒ Cramer không kết luận được ⇒ trả về <code>false</code>.</div>
+<div class="step">
+<div class="work">
+<pre class="code">
+Cramer := proc(A, b)
+  local n, D0, Di, Ai, i, r, x;
+  n := nops(A);
+  if not LaVuong(A) or nops(b) &lt;&gt; n then return false; end if;
+  D0 := DinhThucTG(A);                        # Delta
+  x := [];
+  for i from 1 to n do
+    Ai := [seq(subsop(i = b[r], A[r]), r = 1..n)];   # thay cột i của A bởi b
+    Di := DinhThucTG(Ai);                     # Delta_i
+    if D0 = 0 and Di &lt;&gt; 0 then return "Vo Nghiem"; end if;
+    x := [op(x), Di];
+  end do;
+  if D0 = 0 then return false; end if;        # Delta = Delta_i = 0 : không kết luận được
+  map(t -&gt; t/D0, x);                          # x_i = Delta_i / Delta
+end proc:
+
+Cramer([[1,2,3],[4,3,2],[3,5,1]], [2,3,1]);   # [2/3, -1/3, 2/3]
+Cramer([[2,3,1],[1,2,0],[1,1,1]], [1,2,3]);   # "Vo Nghiem"
+Cramer([[2,3,1],[1,2,0],[1,1,1]], [5,2,3]);   # false
+</pre>
+</div>
+<aside class="note"><p><code>subsop(i = b[r], A[r])</code> thay phần tử thứ $i$ của dòng $r$ bằng $b_r$ — làm cho mọi dòng tức là thay <b>cột</b> $i$ bằng cột hệ số tự do, đúng định nghĩa $A_i$.</p><p>Ví dụ 2: $\Delta=0$, $\Delta_1=-8\ne0$ ⇒ vô nghiệm. Ví dụ 3: $\Delta=\Delta_1=\Delta_2=\Delta_3=0$ ⇒ <code>false</code>.</p></aside>
+</div>
+<div class="kq">Cho đúng ba kết quả của đề (kiểm tra bằng bản Python tương đương).</div>
+</section>
+
+</main>
+</div>
+<a class="totop" href="#">↑ Đầu trang</a>
+<button class="themebtn" id="themebtn" type="button">◐ Giao diện</button>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  if(window.renderMathInElement){
+    renderMathInElement(document.getElementById('main'),{delimiters:[{left:"$$",right:"$$",display:true},{left:"\\[",right:"\\]",display:true},{left:"\\(",right:"\\)",display:false},{left:"$",right:"$",display:false}],throwOnError:false,strict:false,macros:{"\\R":"\\mathbb{R}"}});
+  }
+  // build TOC from h2.group and section.problem (after math is rendered, by cloning headings)
+  var toc=document.getElementById('toc');
+  document.querySelectorAll('#main h2.group, #main section.problem').forEach(function(el){
+    if(el.matches('h2.group')){var d=document.createElement('div');d.className='grp';d.textContent=el.textContent;toc.appendChild(d);return;}
+    var a=document.createElement('a');a.href='#'+el.id;
+    var h=el.querySelector('h2');
+    if(h){h.childNodes.forEach(function(n){var c=n.cloneNode(true);if(c.classList&&c.classList.contains('num')){c=document.createTextNode(n.textContent+' ');}a.appendChild(c);});}
+    else a.textContent=el.id;
+    toc.appendChild(a);
+  });
+  var root=document.documentElement;
+  try{var t=localStorage.getItem('dstt-theme');if(t)root.setAttribute('data-theme',t);}catch(e){}
+  document.getElementById('themebtn').onclick=function(){
+    var dark=root.getAttribute('data-theme')==='dark'||(!root.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme: dark)').matches);
+    var n=dark?'light':'dark';root.setAttribute('data-theme',n);try{localStorage.setItem('dstt-theme',n);}catch(e){}
+  };
+});
+</script>
+</body>
+</html>
